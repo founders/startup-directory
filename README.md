@@ -32,4 +32,14 @@ git checkout -b <branch-name>
 git commit -m 'A Descriptive Message'
 ```
 
-### 4. Push to
+### 5. Push A Remote Branch
+
+```bash
+git push --set-upstream origin <branch-name>
+# or simply
+git push
+```
+
+### 6. Open a Pull Request
+
+Open a Pull Request on Github, assign yourself to it and tag @SirajChokshi for a review.
