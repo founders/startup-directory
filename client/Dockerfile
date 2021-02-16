@@ -1,11 +1,10 @@
 FROM node
 
 WORKDIR /app/client
-COPY package*.json ./app/client
+COPY . /app/client
 
 RUN yarn
-
-CMD ['yarn', 'build']
+RUN yarn build
 
 EXPOSE 3000
 CMD ['yarn', 'dev']

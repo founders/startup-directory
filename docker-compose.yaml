@@ -19,6 +19,11 @@ services:
       - ./client:/app/client
     ports:
       - 3000:3000
+  db:
+    image: mongo
+    container_name: db
+    ports:
+      - "27017:27017"
 
 volumes:
   node_modules:
