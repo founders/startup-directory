@@ -1,6 +1,6 @@
 # Startup Directory
 
-A startup directory built by [Founders](https://founders.illiois.edu) at the University of Illinois at Urbana-Champaign. Built on top of Next.js and Flask with MongoDB.
+A startup directory built by [Founders](http://founders.illinois.edu) at the University of Illinois at Urbana-Champaign. Built on top of Next.js and Flask with MongoDB.
 
 ## Getting Started
 
