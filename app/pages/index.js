@@ -1,5 +1,5 @@
-import Head from "next/head";
-import styles from "../styles/Home.module.css";
+import Head from 'next/head';
+import styles from '../styles/Home.module.css';
 
 export default function Home() {
   return (
@@ -21,10 +21,10 @@ export default function Home() {
         <h2>Example of an environment variable:</h2>
 
         <p className={styles.description}>
-          API_URL:{" "}
+          API_URL:{' '}
           <code className={styles.code}>
             {process.env.NEXT_PUBLIC_API_URL ?? (
-              <span style={{ color: "red" }}>NOT_FOUND</span>
+              <span style={{ color: 'red' }}>NOT_FOUND</span>
             )}
           </code>
         </p>

@@ -1,7 +1,7 @@
 FROM node
 
-WORKDIR /app/client
-COPY . /app/client
+WORKDIR /app/startup-dir
+COPY . /app/startup-dir
 
 RUN yarn
 RUN yarn build

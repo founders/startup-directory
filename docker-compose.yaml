@@ -1,29 +1,20 @@
-version: "3.7"
+version: '3.7'
 
 services:
-  api:
-    restart: always
-    build: ./api
-    container_name: api
-    command: python app.py
-    volumes:
-      - ./api:/app/api
-    ports:
-      - 8000:8000
   frontend:
     restart: always
-    build: ./client
-    container_name: client
+    build: ./app
+    container_name: startup-dir
     command: yarn dev
     volumes:
-      - ./client:/app/client
+      - ./app:/app/startup-dir
     ports:
       - 3000:3000
   db:
     image: mongo
     container_name: db
     ports:
-      - "27017:27017"
+      - '27017:27017'
 
 volumes:
   node_modules:
