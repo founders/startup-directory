@@ -1,9 +1,10 @@
 version: '3.7'
 
 services:
-  frontend:
+  app:
     restart: always
     build: ./app
+    env_file: ./app/.env.local
     container_name: startup-dir
     command: yarn dev
     volumes:
