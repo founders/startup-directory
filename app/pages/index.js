@@ -17,17 +17,6 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>Or where it should be 🥴</p>
-
-        <h2>Example of an environment variable:</h2>
-
-        <p className={styles.description}>
-          API_URL:{' '}
-          <code className={styles.code}>
-            {process.env.NEXT_PUBLIC_API_URL ?? (
-              <span style={{ color: 'red' }}>NOT_FOUND</span>
-            )}
-          </code>
-        </p>
       </main>
     </div>
   );
