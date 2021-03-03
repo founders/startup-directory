@@ -3,12 +3,16 @@ version: '3.7'
 services:
   app:
     restart: always
-    build: ./app
+    build:
+      context: app
+      dockerfile: Dockerfile
     env_file: ./app/.env.local
     container_name: startup-dir
     command: yarn dev
     volumes:
-      - ./app/app/startup-dir
+      - ./app:/app/startup_directory
+      - /app/startup_directory/node_modules
+      - /app/startup_directory/.next
     ports:
       - 3000:3000
   db:
@@ -17,5 +21,3 @@ services:
     ports:
       - '27017:27017'
 
-volumes:
-  node_modules:

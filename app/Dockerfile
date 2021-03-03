@@ -2,11 +2,14 @@ FROM node
 
 ENV PORT 3000
 
-COPY . .
+RUN mkdir -p /app/startup_directory
+WORKDIR /app/startup_directory
 
-RUN yarn
+COPY package*.json /app/startup_directory
+RUN yarn install
+COPY . /app/startup_directory
 
-RUN yarn build
+RUN yarn run build
 
 EXPOSE 3000
-CMD ['yarn', 'dev']
+CMD "yarn" "dev"
