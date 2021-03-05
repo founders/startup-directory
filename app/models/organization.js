@@ -1,8 +1,8 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 
-var Schema = mongoose.Schema;
+const FounderSchema = require('mongoose').model('founder').schema;
 
-var OrgSchema = new Schema({
+const OrgSchema = new Schema({
   name: {
     type: String,
     required: true
@@ -17,13 +17,10 @@ var OrgSchema = new Schema({
   },
   founded: {
     type: Date,
-    default: Date.now
-  },
-  Founder: {
-    type: String,
     required: true
-  }
+  },
+  founders: [FounderSchema]
 });
 
-module.exports = mongoose.models.OrgSchema || mongoose.model('organization',OrgSchema);
+module.exports = mongoose.models.OrgSchema || mongoose.model('organization', OrgSchema);
 
