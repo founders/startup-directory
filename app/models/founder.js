@@ -12,7 +12,11 @@ const FounderSchema = new Schema({
     position: {
         type: String,
         required: true
-      }
+    },
+    headshotURL: {
+      type: String,
+      required: false
+    }
   });
 
   module.exports = mongoose.models.FounderSchema || mongoose.model('founder', FounderSchema);
