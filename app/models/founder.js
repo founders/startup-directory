@@ -9,7 +9,7 @@ const FounderSchema = new Schema({
     type: String,
     required: true,
   },
-  position: {
+  title: {
     type: String,
     required: true,
   },

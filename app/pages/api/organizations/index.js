@@ -13,6 +13,21 @@ export default async function handler(req, res) {
   const id = await getNewOrgId(req.body?.name);
 
   switch (method) {
+    case 'GET':
+      try {
+        const org = await Org.find();
+        if (!org) {
+          return res
+            .status(400)
+            .json({ success: false, message: 'no orgs found' });
+        }
+
+        res.status(200).json({ success: true, data: org });
+      } catch (error) {
+        res.status(400).json({ success: false });
+      }
+      break;
+
     case 'POST':
       try {
         const org = await Org.create({

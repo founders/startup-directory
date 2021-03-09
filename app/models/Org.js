@@ -3,7 +3,7 @@ import mongoose, { Schema } from 'mongoose';
 //do not delete this line or the Founder schema will not be registered properly
 import Founder from './Founder';
 
-const FounderSchema = require('mongoose').model('Founder').schema;
+const FounderSchema = mongoose.model('Founder').schema;
 
 const OrgSchema = new Schema({
   id: {
