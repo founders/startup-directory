@@ -1,6 +1,16 @@
 import dbConnect from '../../../middleware/dbConnect';
 import Org from '../../../models/Org';
 
+/**
+ * api/organizations/[id]
+ * GET: return the organization matching [id]
+ * PATCH: update the organization matching [id]
+ *    - only updates fields provided by body
+ *    - will reject if body contains ID
+ * @param {*} req api request
+ * @param {*} res server response
+ * @returns JSON with org data if successful, error message if not
+ */
 export default async function handler(req, res) {
   const {
     query: { id },
