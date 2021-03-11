@@ -22,7 +22,7 @@ export default async function handler(req, res) {
             .json({ success: false, message: 'no orgs found' });
         }
 
-        res.status(200).json({ success: true, data: org });
+        res.status(200).json({ success: true, data: orgs });
       } catch (error) {
         res.status(400).json({ success: false, message: error?.message });
       }
