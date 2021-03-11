@@ -1,56 +1,21 @@
 @value colors: "./colors.css";
 @value cBlue from colors;
 
-.container {
-  min-height: 100vh;
-  padding: 0 0.5rem;
+.directoryWrapper {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
-.main {
-  padding: 5rem 0;
+.leftWrapper {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  margin-right: 18px;
 }
 
-.title a {
-  color: cBlue;
-  text-decoration: none;
+.rightWrapper {
+  flex: 3;
 }
 
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
-}
-
-.title {
-  margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
-}
-
-.title,
-.description {
-  text-align: center;
-}
-
-.description {
-  line-height: 1.5;
-  font-size: 1.5rem;
-}
-
-.code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
+.desc {
+  margin: 0 0 40px;
+  font-weight: 400;
+  line-height: 150%;
 }

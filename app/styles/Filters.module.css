@@ -1,0 +1,31 @@
+@value colors: "./colors.css";
+@value borderColor from colors;
+@value foundersOrange from colors;
+@value textColor from colors;
+@value pureWhiteColor from colors;
+
+.filterBox {
+  width: 100%;
+  border: 1px solid borderColor;
+  border-radius: 8px;
+  padding: 18px;
+  color: textColor;
+}
+
+.filterBox > h3 {
+  margin-top: 0;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: calc(1em + 4px);
+  opacity: 0.6;
+}
+
+.comboboxInput {
+  width: 100%;
+  height: 38px;
+  border-radius: 6px;
+  border: 1px solid borderColor;
+  padding: 10px;
+  box-sizing: border-box;
+  font-family: 'Work Sans';
+}

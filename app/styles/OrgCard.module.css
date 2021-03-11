@@ -1,0 +1,78 @@
+@value colors: "./colors.css";
+@value borderColor from colors;
+@value foundersOrange from colors;
+@value textColor from colors;
+@value pureWhiteColor from colors;
+
+.orgCardWrapper {
+  width: 100%;
+  display: flex;
+  border: solid 1px borderColor;
+  border-radius: 8px;
+  padding: 18px;
+  justify-content: stretch;
+  align-items: center;
+}
+
+.orgCardWrapper > img {
+  height: 80px;
+  width: 80px;
+  margin-right: 18px;
+  border-radius: 5.45px;
+}
+
+.orgCardWrapper > a {
+  width: 48px;
+  height: 48px;
+  background-color: rgba(255, 151, 00, 0.12);
+  display: flex;
+  justify-content: center;
+  place-items: center;
+  color: foundersOrange;
+  border-radius: 3.3px;
+}
+
+.orgCardWrapper > *:nth-child(2) {
+  flex: 4;
+}
+
+.orgCardWrapper > *:nth-child(2) > h3 {
+  margin: 0 0 2px;
+  font-size: 16px;
+}
+
+.orgCardWrapper > *:nth-child(2) > p {
+  margin: 0 0 6px;
+  font-size: 14px;
+}
+
+.rightArr {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  transform: scale(var(--ggs, 1));
+  width: 22px;
+  height: 22px;
+}
+.rightArr::after,
+.rightArr::before {
+  content: '';
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  right: 3px;
+}
+.rightArr::after {
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid;
+  border-right: 2px solid;
+  transform: rotate(45deg);
+  bottom: 7px;
+}
+.rightArr::before {
+  width: 16px;
+  height: 2px;
+  bottom: 10px;
+  background: currentColor;
+}
