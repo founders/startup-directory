@@ -1,9 +1,10 @@
 import mongoose, { Schema } from 'mongoose';
+import dbConnect from '../middleware/dbConnect';
 
 //do not delete this line or the Founder schema will not be registered properly
 import Founder from './Founder';
 
-const FounderSchema = mongoose.model('Founder').schema;
+const FounderSchema = Founder.schema;
 
 const OrgSchema = new Schema({
   id: {
