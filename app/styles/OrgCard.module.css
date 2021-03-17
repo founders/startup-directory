@@ -14,6 +14,10 @@
   align-items: center;
 }
 
+.orgCardWrapper:not(:last-child) {
+  margin-bottom: 11px;
+}
+
 .orgCardWrapper > img {
   height: 80px;
   width: 80px;

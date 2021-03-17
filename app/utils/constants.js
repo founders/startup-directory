@@ -1,6 +1,10 @@
+/** @constant {number} */
 const DATE_FOUNDED_MIN = 2010;
+
+/** @constant {number} */
 const DATE_FOUNDED_MAX = new Date().getFullYear;
 
+/** @constant {Object<string, any>} */
 export const DEFAULT_FILTERS = Object.freeze({
   query: '',
   categories: [],
@@ -9,6 +13,7 @@ export const DEFAULT_FILTERS = Object.freeze({
   isHiring: false,
 });
 
+/** @constant {Array<string>} */
 export const CATEGORIES = Object.freeze(
   [
     'Finance',
@@ -21,6 +26,7 @@ export const CATEGORIES = Object.freeze(
   ].sort((a, b) => a.localeCompare(b)),
 );
 
+/** @constant {Object<string, string>} */
 export const TAG_COLORS = Object.freeze({
   BLUE: '',
   BLUE_BACKGROUND: '',

@@ -3,6 +3,12 @@ import Nav from '../components/Nav';
 import Head from 'next/head';
 import styles from '../styles/Layout.module.css';
 
+/**
+ * Page layout wrapper
+ *
+ * @param {*} props
+ * @returns {React.component}
+ */
 export default function Layout({ title, children }) {
   return (
     <>

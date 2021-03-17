@@ -3,6 +3,15 @@ import styles from '../styles/Feed.module.css';
 
 import OrgCard from '../components/OrgCard';
 
+/**
+ * Checks for overlap between array A and B
+ *
+ * @param {Array} a
+ * @param {Array} b
+ * @returns {boolean}
+ *
+ * @public
+ */
 function hasSharedElem(a, b) {
   for (const elemB of b) {
     if (a.some((elemA) => elemA === elemB)) {
@@ -12,6 +21,13 @@ function hasSharedElem(a, b) {
   return false;
 }
 
+/**
+ * Feed of organizations that makes requests and filters
+ * according to props
+ *
+ * @param {*} props
+ * @returns {React.Component}
+ */
 const Feed = ({ filters }) => {
   const [data, setData] = React.useState([]);
   const [results, setResults] = React.useState([]);
@@ -19,21 +35,18 @@ const Feed = ({ filters }) => {
 
   React.useEffect(() => {
     // fetch for new results
-    setData([
-      {
-        name: 'Allergenius',
-        founded: 2019,
-        isHiring: false,
-        categories: ['Software', 'Productivity'],
-        desc:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
-      },
-    ]);
+    setIsLoading(true);
+    fetch('/api/organizations')
+      .then((res) => res.json())
+      .then((json) => {
+        json.data && setData(json.data);
+        setIsLoading(false);
+      })
+      .catch((e) => {
+        console.error(e);
+        setIsLoading(false);
+      });
   }, []);
-
-  React.useEffect(() => {
-    setResults(data);
-  }, [data]);
 
   React.useEffect(() => {
     const filteredResults = data
@@ -43,6 +56,7 @@ const Feed = ({ filters }) => {
       ?.filter(
         (res) =>
           filters.categories.length === 0 ||
+          !res.categories ||
           hasSharedElem(res.categories, filters.categories),
       )
       // filter by query
@@ -54,6 +68,8 @@ const Feed = ({ filters }) => {
             .toLowerCase()
             .includes(filters.query.toLowerCase()),
       );
+
+    // TODO: Add dates to models and enable filtering
     // filter by founding date
     // ?.filter(
     //   (res) =>
@@ -70,6 +86,7 @@ const Feed = ({ filters }) => {
     filters.minFoundingDate,
     filters.maxFoundingDate,
     filters.categories,
+    data,
   ]);
 
   return (

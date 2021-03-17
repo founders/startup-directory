@@ -2,6 +2,12 @@ import React from 'react';
 
 import styles from '../styles/SearchInput.module.css';
 
+/**
+ * Input for search query
+ *
+ * @param {*} props
+ * @returns {React.Component}
+ */
 const SearchInput = ({ filters, updateFilters }) => {
   const handleChange = (e) => {
     updateFilters({ ...filters, query: e?.target?.value });

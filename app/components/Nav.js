@@ -2,6 +2,11 @@ import React from 'react';
 import styles from '../styles/Nav.module.css';
 import Link from 'next/link';
 
+/**
+ * Navigation Bar
+ *
+ * @returns {React.Component}
+ */
 const Nav = () => (
   <nav className={styles.navWrapper}>
     <Link href="/">LOGO</Link>
