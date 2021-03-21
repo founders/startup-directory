@@ -1,0 +1,10 @@
+.feedBox {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.feedBox > p {
+  margin: 0 0 8px;
+  font-size: 14px;
+}

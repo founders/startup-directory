@@ -1,0 +1,42 @@
+@value colors: "./colors.css";
+@value borderColor from colors;
+@value foundersOrange from colors;
+@value textColor from colors;
+@value pureWhiteColor from colors;
+
+.navWrapper {
+  height: 70px;
+  border-bottom: solid 1px borderColor;
+  display: flex;
+  justify-content: space-between;
+  background-color: pureWhiteColor;
+}
+
+.navLinks {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.navLinks > li {
+  display: inline-block;
+  height: 100%;
+}
+
+.navLinks > li > a {
+  display: flex;
+  height: 100%;
+  padding: 0 19px;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Montserrat';
+  text-transform: uppercase;
+  font-weight: 600;
+  color: textColor;
+  opacity: 0.6;
+}
+
+.navLinks > li > a.active {
+  opacity: 1;
+  color: foundersOrange;
+}

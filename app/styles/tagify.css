@@ -1,0 +1,56 @@
+.tags-look .tagify__dropdown__item {
+  display: inline-block;
+  border-radius: 3px;
+  padding: 0.3em 0.5em;
+  border: 1px solid #ccc;
+  background: #f3f3f3;
+  margin: 0.2em;
+  font-size: 0.85em;
+  color: black;
+  transition: 0s;
+}
+
+.tags-look .tagify__dropdown__item--active {
+  color: black;
+}
+
+.tags-look .tagify__dropdown__item:hover {
+  background: lightyellow;
+  border-color: gold;
+}
+
+.custom-tagify {
+  --tag-bg: rgba(255, 151, 00, 0.12) !important;
+  --tag-hover: rgba(255, 151, 00, 0.12) !important;
+  --tag-text-color: #f89620 !important;
+  --tags-border-color: #d7d7d7 !important;
+  --tag-text-color--edit: #f89620 !important;
+  --tag-remove-bg: rgba(255, 151, 00, 0.12) !important;
+  --tag-invalid-bg: #d7d7d7;
+  --tag-invalid-color: #3c3c3c;
+  --tag-pad: 0.6em 1em;
+  --tag-inset-shadow-size: 0;
+  --tag-remove-btn-color: none !important;
+  --tag-remove-btn-bg--hover: #f89620 !important;
+
+  display: inline-block;
+  min-width: 0;
+  border: none;
+  border-radius: 6px;
+  height: 38px;
+}
+
+.custom-tagify .tagify__tag {
+  margin-top: 0;
+  color: #f89620 !important;
+  background-color: rgba(255, 151, 00, 0.12);
+}
+
+.custom-tagify .tagify__tag:hover {
+  box-shadow: none !important;
+}
+
+.custom-tagify .tagify__tag > div {
+  border-radius: 4px;
+  font-size: 12px;
+}

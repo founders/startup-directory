@@ -1,0 +1,91 @@
+@value colors: "./colors.css";
+@value borderColor from colors;
+@value foundersOrange from colors;
+@value textColor from colors;
+@value pureWhiteColor from colors;
+@value cBlue from colors;
+
+.multiselectWrapper {
+  width: 100%;
+  border: 1px solid borderColor;
+  border-radius: 8px;
+  color: textColor;
+  position: relative;
+  height: 38px;
+  padding: 7px 10px;
+}
+
+.tagsInput {
+  display: flex;
+  position: relative;
+  border-spacing: 0;
+  top: 0;
+  width: 100%;
+  left: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.tagsInput > input {
+  flex: 0 1 1;
+  border: none;
+  background: none;
+  overflow: hidden;
+  width: 100%;
+}
+
+.tagsInput > input:focus {
+  outline: none;
+}
+
+.dropdown {
+  display: none;
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  width: 100%;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  list-style: none;
+  background-color: pureWhiteColor;
+  border-radius: 4px;
+  border: 1px solid borderColor;
+  z-index: 2;
+}
+
+*:focus-within + .dropdown,
+.dropdown:hover,
+.dropdown:focus-within {
+  display: block;
+}
+
+.dropdown > li {
+  cursor: pointer;
+  padding: 2px 10px;
+  user-select: none;
+}
+
+.dropdown > li:first-child {
+  padding-top: 6px;
+}
+
+.dropdown > li:last-child {
+  padding-bottom: 6px;
+}
+
+.dropdown > li:hover,
+.dropdown > li:focus {
+  background-color: cBlue;
+  color: pureWhiteColor;
+}
+
+.dropdown > li[data-empty-state] {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.dropdown > li[data-empty-state]:hover {
+  background-color: inherit;
+  color: inherit;
+}
