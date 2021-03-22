@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-
+import Form from './form.js'
+import "bootstrap/dist/css/bootstrap.css";
 export default function Home() {
   return (
     <div className={styles.container}>
@@ -15,9 +16,10 @@ export default function Home() {
           <br />
           <a href={undefined}>Startup Directory</a>
         </h1>
-
+        <Form onSubmit={values => alert(JSON.stringify(values))} />
         <p className={styles.description}>Or where it should be 🥴</p>
       </main>
     </div>
   );
 }
+//<Form onSubmit={values => alert(JSON.stringify(values))} />
