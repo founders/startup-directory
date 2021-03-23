@@ -9,6 +9,9 @@ import Feed from '../components/Feed';
 import styles from '../styles/Home.module.css';
 
 import { DEFAULT_FILTERS } from '../utils/constants';
+import ReactDOM from 'react-dom'
+
+
 
 export default function Home() {
   const [filters, setFilters] = React.useState(DEFAULT_FILTERS);
