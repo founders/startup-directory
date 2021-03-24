@@ -10,8 +10,6 @@ import styles from '../styles/Home.module.css';
 
 import { DEFAULT_FILTERS } from '../utils/constants';
 
-
-
 export default function Home() {
   const [filters, setFilters] = React.useState(DEFAULT_FILTERS);
 

@@ -56,13 +56,11 @@ const postSchema = {
   };
 
 
-export default function CForm({ onSubmit }){
+export default function Form({ onSubmit }){
     return (
     <div class="container">
-        <div class="row">
-      <div class="col-md-6">
+      <div className= "col-md-offset-8 col-md-7">
         <JSONSchemaForm onSubmit={onSubmit} schema={postSchema} />
-      </div>
     </div>
   </div>
 );
