@@ -1,16 +1,16 @@
 import React from 'react';
 import JSONSchemaForm from "react-jsonschema-form";
-import "bootstrap/dist/css/bootstrap.css";
+//import "bootstrap/dist/css/bootstrap.css";
 
 const postSchema = {
     type: "object",
     properties: {
       name: {
-        title: "Start-Up Name",
+        title: "Startup Name",
         type: "string"
       },
       email: {
-        title: "Start-Up Email",
+        title: "Startup Email",
         type: "string",
         format: "email"
       },
