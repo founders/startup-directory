@@ -16,7 +16,7 @@ export default function Login() {
         }}
       >
         <a
-          href="#"
+          href="/api/auth/login"
           style={{
             padding: '1em 2em',
             display: 'block',
@@ -30,7 +30,7 @@ export default function Login() {
         </a>
         <br />
         <a
-          href="#"
+          href="/api/auth/logout"
           style={{
             padding: '1em 2em',
             display: 'block',
