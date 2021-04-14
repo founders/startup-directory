@@ -1,11 +1,18 @@
 @value colors: "./colors.css";
 @value textColor, borderColor from colors;
+@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"); 
 
 
 .center {
-    margin: auto;
-    width: 50%;
-    padding: 10px;
+  margin: auto; 
+  width: 50%;
+  padding: 10px;
+  position: fixed;
+  top: 35%;
+  /*left: 50%;*/
+  margin-top: -50px;
+  /* margin-left: -100px; */
+  /* overflow-x: scroll; */
 }
 
 .desc {
@@ -36,12 +43,4 @@
   opacity: 0.6;
 }
 
-.comboboxInput {
-  width: 100%;
-  height: 38px;
-  border-radius: 6px;
-  border: 1px solid borderColor;
-  padding: 10px;
-  box-sizing: border-box;
-  font-family: 'Work Sans';
-}
+
