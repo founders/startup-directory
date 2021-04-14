@@ -34,3 +34,14 @@ a {
   border-radius: 8px;
   padding: 18px;
 }
+
+/* TODO: manual override styles */
+@media (min-width: 992px)
+{
+  .col-md-offset-8 {
+    margin-left: 0 !important;
+}
+.col-md-7 {
+  width: 100% !important;
+}
+}

@@ -10,12 +10,10 @@ export default function Profile(){
       <Layout title="Edit your startup's profile">
       <p className={styles.desc}>
         Please Use this Form to add your startup to the Directory!
-      
-
-      <p className = {styles.center}  >
+      </p>
+      <div className={styles.center}> 
       <Form onSubmit={FormData => alert(JSON.stringify(FormData))} />
-      </p>
-      </p>
+      </div>
     </Layout>
     );
     
