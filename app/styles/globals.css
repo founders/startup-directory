@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Work+Sans:wght@400;500&display=swap');
+
 html,
 body {
   padding: 0;
@@ -30,7 +32,19 @@ a {
 }
 
 .card {
-  border: 1px solid borderColor;
+  border: 1px solid #d7d7d7;
   border-radius: 8px;
   padding: 18px;
+}
+
+.card > h2 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #3c3c3c;
+  opacity: 0.6;
+  margin: 0 0 11.5px 0;
+}
+
+.card + .card {
+  margin-top: 18px;
 }
