@@ -9,7 +9,11 @@ import Link from 'next/link';
  */
 const Nav = () => (
   <nav className={styles.navWrapper}>
-    <Link href="/">LOGO</Link>
+    <Link href="/">
+      <a>
+        <img className={styles.logoWrapper} src="/logo.svg" />
+      </a>
+    </Link>
     <ul className={styles.navLinks}>
       <li>
         <Link href="/" activeClassName="active-link" exact>

@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import styles from '../styles/OrgCard.module.css';
+import Skeleton from 'react-loading-skeleton';
 import Tags from './Tags';
 
 /**
@@ -10,7 +11,33 @@ import Tags from './Tags';
  * @param {*} props
  * @returns {React.Component}
  */
-export default function OrgCard({ org }) {
+export default function OrgCard({ org, skeleton }) {
+  if (skeleton) {
+    return (
+      <div className={styles.orgCardWrapper}>
+        <Skeleton height={80} width={80} style={{ marginRight: '18px' }} />
+        <div className="info">
+          <h3 style={{ display: 'flex', alignItems: 'center' }}>
+            <Skeleton width={200} style={{ marginRight: '8px' }} />{' '}
+            <Skeleton width={70} />
+          </h3>
+          <p>
+            <Skeleton />
+          </p>
+          <Skeleton width={120} />
+        </div>
+        <a
+          style={{
+            marginLeft: '18px',
+            backgroundColor: '#3c3c3c12',
+            color: '#3c3c3c3c',
+          }}
+        >
+          <i className={styles.rightArr} />
+        </a>
+      </div>
+    );
+  }
   return (
     <div className={styles.orgCardWrapper}>
       <img
@@ -35,7 +62,7 @@ export default function OrgCard({ org }) {
         <p>{org.description}</p>
         <Tags tags={org.categories ?? []} />
       </div>
-      <Link href={org.name}>
+      <Link href={`/org/${org.id}`}>
         <a>
           <i className={styles.rightArr} />
         </a>

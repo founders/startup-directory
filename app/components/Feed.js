@@ -31,7 +31,7 @@ function hasSharedElem(a, b) {
 const Feed = ({ filters }) => {
   const [data, setData] = React.useState([]);
   const [results, setResults] = React.useState([]);
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
     // fetch for new results
@@ -91,13 +91,19 @@ const Feed = ({ filters }) => {
 
   return (
     <section className={styles.feedBox}>
-      <p>
-        {results.length} result{results.length !== 1 && 's'}{' '}
-        {filters.query && `for '${filters.query}'`}
-      </p>
-      {results.map((res) => (
-        <OrgCard key={res.id} org={res} query={filters.query} />
-      ))}
+      {!isLoading ? (
+        <p>
+          {results.length} result{results.length !== 1 && 's'}{' '}
+          {filters.query && `for '${filters.query}'`}
+        </p>
+      ) : (
+        <p>Loading...</p>
+      )}
+      {!isLoading
+        ? results.map((res) => (
+            <OrgCard key={res.id} org={res} query={filters.query} />
+          ))
+        : new Array(2).fill(<OrgCard skeleton />)}
     </section>
   );
 };

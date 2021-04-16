@@ -1,0 +1,18 @@
+@value colors: "./colors.css";
+@value borderColor from colors;
+@value foundersOrange from colors;
+@value textColor from colors;
+@value pureWhiteColor from colors;
+
+.footerWrapper {
+  padding: 0 30px;
+  height: 70px;
+  margin-top: 18px;
+  border-top: solid 1px borderColor;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: textColor;
+  opacity: 0.6;
+  background-color: pureWhiteColor;
+}
