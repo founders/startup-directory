@@ -41,7 +41,7 @@ export default function OrgCard({ org, skeleton }) {
   return (
     <div className={styles.orgCardWrapper}>
       <img
-        src={org.logo ?? 'https://picsum.photos/seed/picsum/300/300'}
+        src={org.logo ?? `https://picsum.photos/seed/picsum/300/300`}
         alt={`${org.name} Logo`}
       />
       <div className="info">

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import styles from '../../styles/Organization.module.css';
 import Skeleton from 'react-loading-skeleton';
 
+import JobCard from '../../components/JobCard';
 import Tags from '../../components/Tags';
 import Layout from '../../components/Layout';
 
@@ -31,6 +32,7 @@ export default function Org() {
 
   if (!isLoading && !org) {
     router.push('/');
+    return null;
   }
 
   return (
@@ -134,6 +136,13 @@ export default function Org() {
               <Skeleton count={Math.random() * 2 + 3} />
               <Skeleton width={230} />
             </div>
+          )}
+          {/*!isLoading && org?.jobs && */}
+          {true && (
+            <>
+              <h2>Jobs</h2>
+              <JobCard />
+            </>
           )}
         </article>
       </div>

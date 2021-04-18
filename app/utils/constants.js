@@ -1,8 +1,8 @@
 /** @constant {number} */
-const DATE_FOUNDED_MIN = 2010;
+export const DATE_FOUNDED_MAX = new Date().getFullYear();
 
 /** @constant {number} */
-const DATE_FOUNDED_MAX = new Date().getFullYear;
+export const DATE_FOUNDED_MIN = DATE_FOUNDED_MAX - 10;
 
 /** @constant {Object<string, any>} */
 export const DEFAULT_FILTERS = Object.freeze({

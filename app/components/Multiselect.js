@@ -115,6 +115,7 @@ const Multiselect = ({ tags, onChange }) => {
             }}
             fadeRight={isOverflowing}
             tagStyle={{ position: 'relative' }}
+            showDelete
           />
           <input
             ref={inputField}

@@ -1,0 +1,38 @@
+@value colors: "./colors.css";
+@value borderColor from colors;
+@value foundersOrange from colors;
+@value textColor from colors;
+@value pureWhiteColor from colors;
+
+.button {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 4px 32px;
+  border-radius: 8px;
+  border: 2px solid foundersOrange;
+  font-weight: 600;
+  color: foundersOrange;
+}
+
+.skillList {
+  padding: 0;
+  margin: 0 0 1em;
+  list-style: none;
+}
+
+.skillList > li {
+  display: inline;
+}
+
+.skillList > li:first-child {
+  font-weight: 600;
+}
+
+.jobSummary h3 {
+  display: inline;
+  font-size: 18px;
+}
+
+.jobDetails {
+  line-height: 1.5;
+}
