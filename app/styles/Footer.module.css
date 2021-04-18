@@ -1,6 +1,5 @@
 @value colors: "./colors.css";
 @value borderColor from colors;
-@value foundersOrange from colors;
 @value textColor from colors;
 @value pureWhiteColor from colors;
 
