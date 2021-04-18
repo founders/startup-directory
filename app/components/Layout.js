@@ -1,5 +1,6 @@
 import React from 'react';
-import Nav from '../components/Nav';
+import Nav from './Nav';
+import Footer from './Footer';
 import Head from 'next/head';
 import styles from '../styles/Layout.module.css';
 
@@ -9,7 +10,7 @@ import styles from '../styles/Layout.module.css';
  * @param {*} props
  * @returns {React.component}
  */
-export default function Layout({ title, children }) {
+export default function Layout({ title, children, hideTitle }) {
   return (
     <>
       <Nav />
@@ -21,10 +22,11 @@ export default function Layout({ title, children }) {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <main className={styles.main}>
-          <h1>{title || 'Startup Directory'}</h1>
+          {!hideTitle && <h1>{title || 'Startup Directory'}</h1>}
           {children}
         </main>
       </div>
+      <Footer />
     </>
   );
 }

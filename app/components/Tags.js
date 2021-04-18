@@ -13,7 +13,7 @@ import React from 'react';
  * @returns {React.Component}
  */
 const Tags = React.forwardRef(
-  ({ tags, onClick, style, tagStyle, fadeRight }, ref) => {
+  ({ tags, onClick, style, tagStyle, fadeRight, showDelete }, ref) => {
     return (
       <ul
         style={{
@@ -46,6 +46,26 @@ const Tags = React.forwardRef(
             onClick={() => onClick?.(tag)}
           >
             {tag}
+            {showDelete && (
+              <span
+                style={{
+                  width: '1em',
+                  height: '1em',
+                  borderRadius: '50%',
+                  marginLeft: '0.5em',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  backgroundColor: tagStyle.color ?? '#f89620',
+                  color:
+                    tagStyle.backgroundColor ??
+                    tagStyle.background ??
+                    'rgb(255, 243, 224)',
+                }}
+              >
+                &times;
+              </span>
+            )}
           </li>
         ))}
         {fadeRight && (
@@ -59,7 +79,7 @@ const Tags = React.forwardRef(
               right: 0,
               top: 0,
             }}
-          ></div>
+          />
         )}
       </ul>
     );
