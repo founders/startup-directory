@@ -2,6 +2,7 @@ import React from 'react';
 import styles from '../styles/Feed.module.css';
 
 import OrgCard from '../components/OrgCard';
+import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 
 /**
  * Checks for overlap between array A and B
@@ -28,7 +29,7 @@ function hasSharedElem(a, b) {
  * @param {*} props
  * @returns {React.Component}
  */
-const Feed = ({ filters }) => {
+export default function Feed({ filters }) {
   const [data, setData] = React.useState([]);
   const [results, setResults] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
@@ -36,7 +37,7 @@ const Feed = ({ filters }) => {
   React.useEffect(() => {
     // fetch for new results
     setIsLoading(true);
-    fetch('/api/organizations')
+    fetch('/api/organizations/all')
       .then((res) => res.json())
       .then((json) => {
         json.data && setData(json.data);
@@ -100,6 +101,6 @@ const Feed = ({ filters }) => {
       ))}
     </section>
   );
-};
+}
 
-export default Feed;
+export const getServerSideProps = withPageAuthRequired();
