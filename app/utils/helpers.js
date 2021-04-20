@@ -1,5 +1,11 @@
 import React from 'react';
 
+/**
+ * returns JSX for highlighting query within a string
+ * @param {*} str
+ * @param {*} query
+ * @returns
+ */
 export function highlight(str, query) {
   if (!query) return str;
   const re = new RegExp(query.toLowerCase(), 'gi');
@@ -25,4 +31,14 @@ export function highlight(str, query) {
       ))}
     </>
   );
+}
+
+/**
+ * validates given string for an email
+ * @param {string} email
+ * @returns
+ */
+export function validateEmail(email) {
+  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
 }
