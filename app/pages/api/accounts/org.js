@@ -30,7 +30,6 @@ async function handler(req, res) {
         try {
           const { email, org } = JSON.parse(req.body);
           const account = await Account.findOne({ email });
-
           // no account in database matches authenticated user
           if (!account) {
             return res

@@ -14,7 +14,7 @@ export default handleAuth({
           connection: 'google-oauth2',
           prompt: 'select_account',
         },
-        returnTo: '/verify',
+        returnTo: '/auth/verify',
       });
     } catch (error) {
       res.status(error.status || 500).end(error.message);

@@ -23,7 +23,8 @@ function Verify() {
         body: JSON.stringify({ email: user.email }),
       });
       const json = await response.json();
-
+      console.log('res');
+      console.log(json);
       setAccount(json.data);
       setIsComplete(VERIFICATION_STATE[json.success ? 'SUCCESS' : 'FAILED']);
     })();
