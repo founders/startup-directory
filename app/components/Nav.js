@@ -26,6 +26,11 @@ const Nav = () => (
         </Link>
       </li>
       <li>
+        <Link href="/profile" activeClassName="active-link" exact>
+          Profile
+        </Link>
+      </li>
+      <li>
         <Link href="/login" activeClassName="active-link" exact>
           Login
         </Link>
