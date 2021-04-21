@@ -1,6 +1,4 @@
 import dbConnect from '../../../middleware/dbConnect';
-import { getNewOrgId } from '../../../middleware/helpers';
-import Org from '../../../models/Org';
 import { withApiAuthRequired } from '@auth0/nextjs-auth0';
 import Account from '../../../models/Account';
 
