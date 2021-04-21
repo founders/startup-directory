@@ -18,7 +18,7 @@ function Verify() {
 
   React.useEffect(() => {
     (async function () {
-      const response = await fetch('/api/newAccounts/', {
+      const response = await fetch('/api/accounts/', {
         method: 'POST',
         body: JSON.stringify({ email: user.email }),
       });

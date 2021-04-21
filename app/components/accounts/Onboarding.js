@@ -72,7 +72,7 @@ export default function Onboarding({ user }) {
     const handleSubmitOrg = async () => {
       console.log('lookie here');
       console.log(user.email);
-      const res = await fetch('/api/newAccounts/org', {
+      const res = await fetch('/api/accounts/org', {
         method: 'POST',
         body: JSON.stringify({
           email: user.email,
