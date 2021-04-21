@@ -23,10 +23,9 @@ export default async function handler(req, res) {
           const org = await Org.findOne({ id });
           if (!org) {
             return res
-              .status(400)
+              .status(404)
               .json({ success: false, message: 'org not found' });
           }
-
           res.status(200).json({ success: true, data: org });
         } catch (error) {
           res.status(400).json({ success: false, message: error?.message });

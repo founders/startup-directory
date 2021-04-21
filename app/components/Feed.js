@@ -41,6 +41,7 @@ export default function Feed({ filters }) {
       .then((res) => res.json())
       .then((json) => {
         json.data && setData(json.data);
+        console.log(json.data.map((el) => el.id));
         setIsLoading(false);
       })
       .catch((e) => {
