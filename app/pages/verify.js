@@ -31,7 +31,7 @@ function Verify() {
 
   switch (isComplete) {
     case VERIFICATION_STATE.SUCCESS:
-      router.push(account.isAdmin == true ? '/admin' : '/account');
+      router.push(account.isAdmin ? '/admin' : '/account');
       return null;
     case VERIFICATION_STATE.FAILED:
       return <>Verification Failed. Try Again.</>;
