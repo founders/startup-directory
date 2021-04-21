@@ -3,7 +3,6 @@ import Account from '../../../models/Account';
 import Org from '../../../models/Org';
 import dbConnect from '../../../middleware/dbConnect';
 import { getNewOrgId } from '../../../middleware/helpers';
-import { useUser } from '@auth0/nextjs-auth0';
 
 /**
  * Returns one 'organization' document, may be null
@@ -16,8 +15,8 @@ async function handler(req, res) {
       method,
     } = req;
 
-    const { user } = userUser();
-    const email = user.email;
+    // const { user } = userUser();
+    // const email = user.email;
 
     await dbConnect();
 
@@ -28,33 +27,34 @@ async function handler(req, res) {
       org: org to be posted, matching Org Schema
       */
       case 'POST':
-        //if orgId of account [id] is undefined, go through with post, else respond: can only create one organization
-        // if post: update account [id] and create Org with body
         try {
+          const { email, org } = JSON.parse(req.body);
           const account = await Account.findOne({ email });
+
+          // no account in database matches authenticated user
           if (!account) {
             return res
               .status(400)
               .json({ success: false, message: 'no account found with email' });
           }
 
-          if (account?.['orgId']) {
-            //reject post
+          // reject post if the account is already associated with an organization
+          if (account.orgId) {
             return res
-              .status(400)
+              .status(409)
               .json({ success: false, message: 'only one org per account' });
           }
 
-          const id = await getNewOrgId(req.body?.org.name);
-          const org = await Org.create({
-            ...req.body.org,
+          const id = getNewOrgId(org.name);
+          const createOrg = await Org.create({
+            ...org,
             id,
           });
 
           await Account.updateOne({ email }, { orgId: id }, { upsert: false });
-
-          res.status(201).json({ success: true, data: org });
+          res.status(201).json({ success: true, data: createOrg });
         } catch (error) {
+          console.error(error);
           res.status(400).json({ success: false, message: error?.message });
         }
         break;
@@ -100,6 +100,7 @@ async function handler(req, res) {
         break;
     }
   } catch (error) {
+    console.log('hewo');
     console.error(error);
     res.status(error.status || 500).json({
       code: error.code,

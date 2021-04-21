@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import styles from '../../styles/Account.module.css';
 import Skeleton from 'react-loading-skeleton';
+import { useUser } from '@auth0/nextjs-auth0';
 
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 
@@ -12,6 +13,7 @@ import Layout from '../../components/Layout';
 function Account() {
   const [account, setAccount] = React.useState(undefined);
   const [isLoading, setIsLoading] = React.useState(true);
+  const { user } = useUser();
 
   React.useEffect(() => {
     setAccount({ ordID: false });
@@ -26,7 +28,7 @@ function Account() {
 
   // show actions for accounts with no associated organizations
   if (!account?.orgId) {
-    content = <Onboarding />;
+    content = <Onboarding user={user} />;
   }
 
   return (

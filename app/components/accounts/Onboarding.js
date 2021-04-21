@@ -9,7 +9,7 @@ const STAGES = Object.freeze({
   JOINING: 'JOINING',
 });
 
-export default function Onboarding() {
+export default function Onboarding({ user }) {
   const [stage, setStage] = React.useState(STAGES.DEFAULT);
   const [selectedToJoin, setSelectedToJoin] = React.useState(undefined);
 
@@ -69,6 +69,22 @@ export default function Onboarding() {
   );
 
   function getRightButton(stage) {
+    const handleSubmitOrg = async () => {
+      console.log('lookie here');
+      console.log(user.email);
+      const res = await fetch('/api/newAccounts/org', {
+        method: 'POST',
+        body: JSON.stringify({
+          email: user.email,
+          org: {
+            name: 'wesla',
+            email: 'allerg@enius.com',
+            description: 'we make lots of chips',
+            founded: '5/12/2020',
+          },
+        }),
+      });
+    };
     switch (stage) {
       case STAGES.JOINING:
         return (
@@ -84,7 +100,14 @@ export default function Onboarding() {
           </button>
         );
       case STAGES.CREATION:
-        return <button className={styles.onboardingButtonSmall}>Submit</button>;
+        return (
+          <button
+            className={styles.onboardingButtonSmall}
+            onClick={handleSubmitOrg}
+          >
+            Submit
+          </button>
+        );
       default:
         return <></>;
     }

@@ -1,4 +1,5 @@
 import React from 'react';
+import dbConnect from '../middleware/dbConnect';
 
 export function highlight(str, query) {
   if (!query) return str;

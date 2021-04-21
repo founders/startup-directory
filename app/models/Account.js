@@ -4,7 +4,6 @@ const AccountSchema = new Schema({
   orgId: {
     type: String,
     default: undefined,
-    required: true,
   },
   email: {
     type: String,
@@ -13,7 +12,6 @@ const AccountSchema = new Schema({
   isAdmin: {
     type: Boolean,
     default: false,
-    required: true,
   },
 });
 
