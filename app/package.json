@@ -10,7 +10,7 @@
   "dependencies": {
     "@rjsf/core": "^2.5.1",
     "@yaireo/tagify": "^3.23.1",
-    "bootstrap": "3.0.0",
+    "bootstrap": "3.3.0",
     "dotenv": "^8.2.0",
     "mongodb": "^3.6.4",
     "mongoose": "^5.11.19",
