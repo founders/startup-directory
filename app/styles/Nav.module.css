@@ -22,6 +22,7 @@
   padding: 0;
   margin: 0;
   height: 100%;
+  display: flex;
 }
 
 .navLinks > li {
@@ -39,12 +40,27 @@
   font-family: 'Montserrat';
   text-transform: uppercase;
   font-weight: 600;
-  color: textColor;
-  opacity: 0.6;
+  color: #3c3c3c99;
 }
 
 .fakeLink {
   cursor: default;
+}
+
+.fakeLink > img,
+.fakePicture {
+  width: 32px;
+  height: 32px;
+  margin-right: 9px;
+  border-radius: 50%;
+}
+
+.fakePicture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: foundersOrange;
+  color: white;
 }
 
 .navLinks > li:last-child {
@@ -58,17 +74,29 @@
 
 .dropdown {
   position: relative;
+  height: 100%;
 }
 
 .dropdown > div {
   position: absolute;
-  top: calc(100%);
-  padding: 38px;
+  top: 100%;
+  /* padding: 38px; */
   background: pureWhiteColor;
   display: none;
-  width: 100%;
+  width: min(14ch, 100vw);
+  right: 0;
 }
 
 .dropdown:hover > div {
   display: block;
+  border: 1px solid borderColor;
+}
+
+.dropdown:hover > div > a:first-child {
+  border-top: none;
+}
+
+.dropdown:hover > div > a {
+  padding: 9px 0;
+  border-top: 1px solid borderColor;
 }

@@ -32,7 +32,16 @@ const Nav = () => {
         <li>
           {user?.name ? (
             <div className={styles.dropdown}>
-              <span className={styles.fakeLink}>{user?.name}</span>
+              <span className={styles.fakeLink}>
+                {user?.picture ? (
+                  <img src={user.picture} alt="" />
+                ) : (
+                  <div className={styles.fakePicture}>
+                    {user?.name?.[0] ?? '🚀'}
+                  </div>
+                )}
+                <span style={{ transform: 'scaleY(0.65)' }}>&#9660;</span>
+              </span>
               <div className="content">
                 <Link href="/account" activeClassName="active-link" exact>
                   Account
