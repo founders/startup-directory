@@ -1,5 +1,7 @@
 import dbConnect from '../../../../middleware/dbConnect';
 import Whitelist from '../../../../models/Whitelist';
+import Account from '../../../../models/Account';
+import { withApiAuthRequired, getSession } from '@auth0/nextjs-auth0';
 
 /**
  * api/admin/whitelist
@@ -9,10 +11,30 @@ import Whitelist from '../../../../models/Whitelist';
  * @param {*} res server response
  * @returns JSON with org data if successful, error message if not
  */
-export default async function handler(req, res) {
+async function handler(req, res) {
   const { method } = req;
 
   await dbConnect();
+
+  const {
+    user: { email, email_verified },
+  } = getSession(req, res);
+
+  // reject if no valid auth user provided
+  if (!email || !email_verified) {
+    return res
+      .status(403)
+      .json({ success: false, message: 'no credentials provided' });
+  }
+
+  const maybeAccount = await Account.findOne({ email });
+
+  // reject if user is null or not an admin
+  if (!maybeAccount?.isAdmin) {
+    return res
+      .status(401)
+      .json({ success: false, message: 'unauthorized user' });
+  }
 
   switch (method) {
     case 'POST':
@@ -95,3 +117,5 @@ export default async function handler(req, res) {
       break;
   }
 }
+
+export default withApiAuthRequired(handler);
