@@ -1,7 +1,6 @@
+import { withApiAuthRequired, getAccessToken } from '@auth0/nextjs-auth0';
 import dbConnect from '../../../../middleware/dbConnect';
 import Org from '../../../../models/Org';
-
-import { withApiAuthRequired, getAccessToken } from '@auth0/nextjs-auth0';
 
 /**
  * api/organizations/[id]/patch
@@ -22,21 +21,6 @@ async function handler(req, res) {
     await dbConnect();
 
     switch (method) {
-      case 'GET':
-        try {
-          const org = await Org.findOne({ id });
-          if (!org) {
-            return res
-              .status(400)
-              .json({ success: false, message: 'org not found' });
-          }
-
-          res.status(200).json({ success: true, data: org });
-        } catch (error) {
-          res.status(400).json({ success: false, message: error?.message });
-        }
-        break;
-
       case 'PATCH':
         try {
           //reject any request that tries to change the ID
@@ -47,7 +31,7 @@ async function handler(req, res) {
           }
 
           //$set: change only the fields provided; upsert: don't insert a new document if one isn't found
-          const org = await Org.update(
+          const org = await Org.updateOne(
             { id: id },
             { $set: req.body },
             { upsert: false },

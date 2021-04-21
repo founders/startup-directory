@@ -2,6 +2,8 @@ import dbConnect from '../../../middleware/dbConnect';
 import { getNewOrgId } from '../../../middleware/helpers';
 import Org from '../../../models/Org';
 import { withApiAuthRequired } from '@auth0/nextjs-auth0';
+import Account from '../../../models/Account';
+import { useUser } from '@auth0/nextjs-auth0';
 
 /**
  * Returns one 'organization' document, may be null
@@ -12,22 +14,31 @@ async function handler(req, res) {
     const { method } = req;
     await dbConnect();
 
-    const id = await getNewOrgId(req.body?.name);
+    const { user } = userUser();
+    const email = user.email;
 
     switch (method) {
       case 'POST':
         try {
-          const org = await Org.create({
+          const account = await Account.create({
             ...req.body,
-            id,
           });
 
-          res.status(201).json({ success: true, data: org });
+          res.status(201).json({ success: true, data: account });
         } catch (error) {
           res.status(400).json({ success: false, message: error?.message });
         }
         break;
 
+      case 'GET':
+        try {
+          const account = await Account.findOne({ email });
+
+          res.status(201).json({ success: true, data: account });
+        } catch (error) {
+          res.status(400).json({ success: false, message: error?.message });
+        }
+        break;
       default:
         res
           .status(400)

@@ -1,29 +1,27 @@
 import dbConnect from '../../../middleware/dbConnect';
 import { getNewOrgId } from '../../../middleware/helpers';
 import Org from '../../../models/Org';
+import { withApiAuthRequired } from '@auth0/nextjs-auth0';
 
 /**
  * Returns one 'organization' document, may be null
  *
  */
-export default async function handler(req, res) {
+async function handler(req, res) {
   try {
     const { method } = req;
     await dbConnect();
-
     const id = await getNewOrgId(req.body?.name);
 
     switch (method) {
-      case 'GET':
+      case 'POST':
         try {
-          const orgs = await Org.find();
-          if (!orgs) {
-            return res
-              .status(400)
-              .json({ success: false, message: 'no orgs found' });
-          }
+          const org = await Org.create({
+            ...req.body,
+            id,
+          });
 
-          res.status(200).json({ success: true, data: orgs });
+          res.status(201).json({ success: true, data: org });
         } catch (error) {
           res.status(400).json({ success: false, message: error?.message });
         }
@@ -43,3 +41,5 @@ export default async function handler(req, res) {
     });
   }
 }
+
+export default handler;

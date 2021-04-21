@@ -37,7 +37,7 @@ export default function Feed({ filters }) {
   React.useEffect(() => {
     // fetch for new results
     setIsLoading(true);
-    fetch('/api/organizations/all')
+    fetch('/api/organizations/get')
       .then((res) => res.json())
       .then((json) => {
         json.data && setData(json.data);

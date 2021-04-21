@@ -5,7 +5,7 @@ const FounderSchema = Founder.schema;
 
 const OrgSchema = new Schema({
   id: {
-    type: Number,
+    type: String,
     required: true,
   },
   name: {

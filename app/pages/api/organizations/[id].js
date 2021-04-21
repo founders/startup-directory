@@ -1,5 +1,5 @@
-import dbConnect from '../../../../middleware/dbConnect';
-import Org from '../../../../models/Org';
+import dbConnect from '../../../middleware/dbConnect';
+import Org from '../../../models/Org';
 
 /**
  * api/organizations/[id]/get
