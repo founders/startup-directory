@@ -77,9 +77,9 @@ export default function Onboarding({ user }) {
         body: JSON.stringify({
           email: user.email,
           org: {
-            name: 'mesla',
-            email: 'allerg@enius.com',
-            description: 'we make lots of chips',
+            name: 'apple',
+            email: 'apple@google.com',
+            description: 'we overcharge for computers',
             founded: '5/12/2020',
           },
         }),
