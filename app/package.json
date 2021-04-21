@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@auth0/nextjs-auth0": "^1.3.0",
     "@yaireo/tagify": "^3.23.1",
     "dotenv": "^8.2.0",
     "mongodb": "^3.6.4",

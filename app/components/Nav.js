@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../styles/Nav.module.css';
 import Link from 'next/link';
+import { useUser } from '@auth0/nextjs-auth0';
 
 /**
  * Navigation Bar

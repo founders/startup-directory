@@ -1,8 +1,12 @@
 import '../styles/globals.css';
 import '../styles/tagify.css';
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
-}
+import { UserProvider } from '@auth0/nextjs-auth0';
 
-export default MyApp;
+export default function App({ Component, pageProps }) {
+  return (
+    <UserProvider>
+      <Component {...pageProps} />
+    </UserProvider>
+  );
+}
