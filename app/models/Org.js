@@ -1,7 +1,9 @@
 import mongoose, { Schema } from 'mongoose';
 import Founder from './Founder';
+import Job from './Job';
 
 const FounderSchema = Founder.schema;
+const JobSchema = Job.schema;
 
 const OrgSchema = new Schema({
   id: {
@@ -26,6 +28,10 @@ const OrgSchema = new Schema({
   },
   founders: {
     type: [FounderSchema],
+    default: [],
+  },
+  jobs: {
+    type: [JobSchema],
     default: [],
   },
 });
