@@ -72,12 +72,12 @@ export default function Onboarding({ user }) {
     const handleSubmitOrg = async () => {
       console.log('lookie here');
       console.log(user.email);
-      const res = await fetch('/api/newAccounts/org', {
+      const res = await fetch('/api/accounts/org', {
         method: 'POST',
         body: JSON.stringify({
           email: user.email,
           org: {
-            name: 'wesla',
+            name: 'mesla',
             email: 'allerg@enius.com',
             description: 'we make lots of chips',
             founded: '5/12/2020',
