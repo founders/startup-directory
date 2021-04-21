@@ -2,7 +2,7 @@ import dbConnect from '../../../middleware/dbConnect';
 import Org from '../../../models/Org';
 
 /**
- * api/organizations/[id]/get
+ * api/organizations/[id]
  * GET: return the organization matching [id]
  * @param {*} req api request
  * @param {*} res server response
