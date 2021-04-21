@@ -10,7 +10,7 @@ import styles from '../styles/Layout.module.css';
  * @param {*} props
  * @returns {React.component}
  */
-export default function Layout({ title, children, hideTitle }) {
+export default function Layout({ title, children, hideTitle, hideFooter }) {
   return (
     <>
       <Nav />
@@ -26,7 +26,7 @@ export default function Layout({ title, children, hideTitle }) {
           {children}
         </main>
       </div>
-      <Footer />
+      {!hideFooter && <Footer />}
     </>
   );
 }

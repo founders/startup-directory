@@ -29,7 +29,8 @@
   height: 100%;
 }
 
-.navLinks > li > a {
+.navLinks > li a,
+.fakeLink {
   display: flex;
   height: 100%;
   padding: 0 19px;
@@ -42,11 +43,32 @@
   opacity: 0.6;
 }
 
+.fakeLink {
+  cursor: default;
+}
+
 .navLinks > li:last-child {
   margin-right: 11px;
 }
 
-.navLinks > li > a.active {
+.navLinks > li a.active {
   opacity: 1;
   color: foundersOrange;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown > div {
+  position: absolute;
+  top: calc(100%);
+  padding: 38px;
+  background: pureWhiteColor;
+  display: none;
+  width: 100%;
+}
+
+.dropdown:hover > div {
+  display: block;
 }
