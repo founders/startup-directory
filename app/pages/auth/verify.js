@@ -1,6 +1,7 @@
 import React from 'react';
 import { withPageAuthRequired, useUser } from '@auth0/nextjs-auth0';
 import { useRouter } from 'next/router';
+import AccountContext from '../../utils/AccountContext';
 
 const VERIFICATION_STATE = Object.freeze({
   LOADING: 'LOADING',
@@ -13,6 +14,14 @@ function Verify() {
   );
   const [account, setAccount] = React.useState(undefined);
 
+  const { setAccount: setAccountContext } = React.useContext(AccountContext);
+
+  React.useEffect(() => {
+    if (account !== undefined) {
+      setAccountContext?.(account);
+    }
+  }, [account]);
+
   const router = useRouter();
   const { user } = useUser();
 
@@ -23,8 +32,6 @@ function Verify() {
         body: JSON.stringify({ email: user.email }),
       });
       const json = await response.json();
-      console.log('res');
-      console.log(json);
       setAccount(json.data);
       setIsComplete(VERIFICATION_STATE[json.success ? 'SUCCESS' : 'FAILED']);
     })();

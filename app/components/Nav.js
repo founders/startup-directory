@@ -2,6 +2,7 @@ import React from 'react';
 import styles from '../styles/Nav.module.css';
 import Link from 'next/link';
 import { useUser } from '@auth0/nextjs-auth0';
+import AccountContext from '../utils/AccountContext';
 
 /**
  * Navigation Bar
@@ -9,7 +10,9 @@ import { useUser } from '@auth0/nextjs-auth0';
  * @returns {React.Component}
  */
 const Nav = () => {
-  const { user, _isLoading } = useUser();
+  const { user } = useUser();
+
+  const { account } = React.useContext(AccountContext);
 
   return (
     <nav className={styles.navWrapper}>
@@ -46,6 +49,11 @@ const Nav = () => {
                 <Link href="/account" activeClassName="active-link" exact>
                   Account
                 </Link>
+                {account?.isAdmin && (
+                  <Link href="/admin" activeClassName="active-link" exact>
+                    Admin
+                  </Link>
+                )}
                 <Link
                   href="/api/auth/logout"
                   activeClassName="active-link"

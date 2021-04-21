@@ -18,3 +18,9 @@ export async function updateWhitelist(whitelist) {
   const json = await res.json();
   return json;
 }
+
+export async function getAnalytics() {
+  const res = await fetch('/api/admin/analytics/');
+  const json = await res.json();
+  return json;
+}

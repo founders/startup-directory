@@ -4,6 +4,7 @@ import Link from 'next/link';
 import styles from '../../styles/Account.module.css';
 import Skeleton from 'react-loading-skeleton';
 import { useUser } from '@auth0/nextjs-auth0';
+import AccountContext from '../../utils/AccountContext';
 
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 
@@ -11,34 +12,44 @@ import Onboarding from '../../components/accounts/Onboarding';
 import Layout from '../../components/Layout';
 
 function Account() {
-  const [account, setAccount] = React.useState(undefined);
   const [isLoading, setIsLoading] = React.useState(true);
   const { user } = useUser();
 
-  React.useEffect(() => {
-    setAccount({ ordID: false });
-  }, [user]);
+  const router = useRouter();
+
+  const { account } = React.useContext(AccountContext);
 
   if (!isLoading && !account) {
     router.push('/');
     return null;
   }
 
-  let content = <>test</>;
+  React.useEffect(() => {
+    console.log(account);
+  }, [account]);
 
+  if (account?.isAdmin) {
+    router.push('/admin');
+    return null;
+  }
+
+  let content = <>test</>;
   // show actions for accounts with no associated organizations
   if (!account?.orgId) {
     content = <Onboarding user={user} />;
   }
 
-  return (
-    <Layout
-      title={!account?.orgId ? 'Account' : 'Edit Your Profile'}
-      hideFooter
-    >
-      {content}
-    </Layout>
-  );
+  if (account) {
+    return (
+      <Layout
+        title={!account?.orgId ? 'Account' : 'Edit Your Profile'}
+        hideFooter
+      >
+        {content}
+      </Layout>
+    );
+  }
+  return null;
 }
 
 export default withPageAuthRequired(Account);

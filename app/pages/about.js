@@ -5,8 +5,8 @@ import Layout from '../components/Layout';
 export default function About() {
   return (
     <Layout title="About">
-      {new Array(3).fill('').map(() => (
-        <p>
+      {new Array(3).fill('').map((_, idx) => (
+        <p key={'about-p-' + idx}>
           {`Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat vitae
           reiciendis cumque perspiciatis autem, amet officiis corrupti
           recusandae id, debitis, hic unde doloremque quod! Illo iusto unde
