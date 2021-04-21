@@ -17,7 +17,7 @@ function Account() {
 
   React.useEffect(() => {
     setAccount({ ordID: false });
-  }, []);
+  }, [user]);
 
   if (!isLoading && !account) {
     router.push('/');
