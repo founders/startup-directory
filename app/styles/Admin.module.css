@@ -1,0 +1,98 @@
+@value colors: "./colors.css";
+@value borderColor from colors;
+@value foundersOrange from colors;
+@value textColor from colors;
+@value pureWhiteColor from colors;
+
+.panel {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+}
+
+.panel > aside {
+  margin-right: 18px;
+}
+
+.panel > article {
+  margin-top: 0 !important;
+}
+
+.whitelistHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.whitelistHeader input {
+  flex: 1;
+  max-width: 180px;
+}
+
+.panel code {
+  margin-top: 0.5em;
+  padding: 0.25em 0.5em;
+  border-radius: 4px 4px 0 0;
+  display: inline-block;
+  background-color: borderColor;
+  font-size: 14px;
+  font-weight: 600;
+  user-select: none;
+}
+
+.panel code + span {
+  font-size: 14px;
+}
+
+.panel textarea {
+  border: 4px solid borderColor;
+  margin: -1px 0 0;
+  display: block;
+  width: 100%;
+  font-family: monospace;
+  box-sizing: border-box;
+  padding: 0.5em;
+  white-space: pre;
+}
+
+.panel > aside ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+}
+
+.panel > aside ul li {
+  display: flex;
+  height: 3em;
+  padding: 0 1em;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.panel > aside ul li:not(:first-child):hover {
+  background: foundersOrange;
+  color: pureWhiteColor;
+}
+
+.panel > aside ul li:not(:first-child):hover::after {
+  content: '→';
+  position: absolute;
+  right: 1em;
+}
+
+.panel > aside ul li:not(:last-child) {
+  border-bottom: 1px borderColor solid;
+}
+
+.panel > article > button {
+  margin-top: 1em;
+  background-color: foundersOrange;
+  color: pureWhiteColor;
+  border: none;
+  padding: 0.5em 1em;
+  border-radius: 4px;
+  cursor: pointer;
+}
