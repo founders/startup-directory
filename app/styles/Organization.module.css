@@ -1,0 +1,107 @@
+@value colors: "./colors.css";
+@value foundersOrange from colors;
+
+.orgGrid {
+  margin-top: 42px;
+  display: grid;
+  grid-template-columns: 330px 1fr;
+  grid-column-gap: 18px;
+}
+
+.logoWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.logoWrapper > h1 {
+  font-size: 16px;
+}
+
+.logoWrapper div {
+  width: 100%;
+}
+
+.logoWrapper p,
+.logoWrapper h4 {
+  margin: 0;
+}
+
+.logoWrapper > img {
+  display: block;
+  width: 79px;
+  margin-right: 12.5px;
+  border-radius: 5.45px;
+}
+
+.backLink {
+  height: 48px;
+  font-size: 16px;
+  font-weight: 600;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 151, 00, 0.12);
+  justify-content: center;
+  color: foundersOrange;
+  border-radius: 8px;
+  margin-bottom: 18px;
+}
+
+.leftArr {
+  box-sizing: border-box;
+  position: relative;
+  display: inline-block;
+  transform: scale(var(--ggs, 1));
+  width: 22px;
+  height: 22px;
+}
+.leftArr::after,
+.leftArr::before {
+  content: '';
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  left: 3px;
+}
+.leftArr::after {
+  width: 8px;
+  height: 8px;
+  border-bottom: 2px solid;
+  border-left: 2px solid;
+  transform: rotate(45deg);
+  bottom: 7px;
+}
+.leftArr::before {
+  width: 16px;
+  height: 2px;
+  bottom: 10px;
+  background: currentColor;
+}
+
+.orgArticle h1 {
+  margin: 0;
+  text-transform: capitalize;
+  font-size: 28px;
+  padding: 8px 0;
+}
+
+.statsList {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.statsList li {
+  margin-top: 6px;
+  opacity: 0.6;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.statsList li h4 {
+  display: inline;
+  opacity: 0.5;
+  font-weight: 500;
+  font-size: 14px;
+}
