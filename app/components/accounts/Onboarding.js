@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../../styles/Account.module.css';
-
+import AccountContext from '../../utils/AccountContext';
 import OrgSelection from './OrgSelection';
 
 const STAGES = Object.freeze({
@@ -12,6 +12,8 @@ const STAGES = Object.freeze({
 export default function Onboarding({ user }) {
   const [stage, setStage] = React.useState(STAGES.DEFAULT);
   const [selectedToJoin, setSelectedToJoin] = React.useState(undefined);
+
+  const { account, setAccount } = React.useContext(AccountContext);
 
   let content = (
     <div className={styles.actionGrid}>
@@ -70,8 +72,6 @@ export default function Onboarding({ user }) {
 
   function getRightButton(stage) {
     const handleSubmitOrg = async () => {
-      console.log('lookie here');
-      console.log(user.email);
       const res = await fetch('/api/accounts/org', {
         method: 'POST',
         body: JSON.stringify({
@@ -84,6 +84,10 @@ export default function Onboarding({ user }) {
           },
         }),
       });
+      const json = await res.json();
+      if (json?.id) {
+        setAccount({ ...account, ordId: json.id });
+      }
     };
     switch (stage) {
       case STAGES.JOINING:
