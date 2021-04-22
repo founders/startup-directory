@@ -28,11 +28,6 @@ function Account() {
     console.log(account);
   }, [account]);
 
-  if (account?.isAdmin) {
-    router.push('/admin');
-    return null;
-  }
-
   let content = <>test</>;
   // show actions for accounts with no associated organizations
   if (!account?.orgId) {
