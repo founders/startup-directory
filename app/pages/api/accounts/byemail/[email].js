@@ -1,31 +1,29 @@
-import dbConnect from '../../../middleware/dbConnect';
-import { getNewOrgId } from '../../../middleware/helpers';
-import Org from '../../../models/Org';
+import dbConnect from '../../../../middleware/dbConnect';
+import { withApiAuthRequired } from '@auth0/nextjs-auth0';
+import Account from '../../../../models/Account';
 
 /**
  * Returns one 'organization' document, may be null
  *
  */
-export default async function handler(req, res) {
+async function handler(req, res) {
   try {
-    const { method } = req;
+    const {
+      method,
+      query: { email },
+    } = req;
     await dbConnect();
+
     switch (method) {
       case 'GET':
         try {
-          const orgs = await Org.find();
-          if (!orgs) {
-            return res
-              .status(400)
-              .json({ success: false, message: 'no orgs found' });
-          }
+          const account = await Account.findOne({ email });
 
-          res.status(200).json({ success: true, data: orgs });
+          res.status(201).json({ success: true, data: account });
         } catch (error) {
           res.status(400).json({ success: false, message: error?.message });
         }
         break;
-
       default:
         res
           .status(400)
@@ -40,3 +38,5 @@ export default async function handler(req, res) {
     });
   }
 }
+
+export default withApiAuthRequired(handler);

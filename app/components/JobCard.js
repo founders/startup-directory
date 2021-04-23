@@ -22,7 +22,7 @@ export default function JobCard({ job }) {
         <ul className={styles.skillList}>
           <li>Skills: </li>
           {skills.map((skill, idx) => (
-            <li>
+            <li key={skill + idx}>
               {skill}
               {idx !== skills.length - 1 && ', '}
             </li>

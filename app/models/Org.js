@@ -5,7 +5,7 @@ const FounderSchema = Founder.schema;
 
 const OrgSchema = new Schema({
   id: {
-    type: Number,
+    type: String,
     required: true,
   },
   name: {
@@ -26,6 +26,29 @@ const OrgSchema = new Schema({
   },
   founders: {
     type: [FounderSchema],
+    default: [],
+  },
+  jobs: {
+    type: [
+      {
+        title: {
+          type: String,
+          required: true,
+        },
+        description: {
+          type: String,
+          required: true,
+        },
+        skills: {
+          type: [String],
+          default: [],
+        },
+        link: {
+          type: String,
+          required: true,
+        },
+      },
+    ],
     default: [],
   },
 });

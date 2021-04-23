@@ -2,6 +2,7 @@ import React from 'react';
 import styles from '../styles/Feed.module.css';
 
 import OrgCard from '../components/OrgCard';
+import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 
 /**
  * Checks for overlap between array A and B
@@ -28,7 +29,7 @@ function hasSharedElem(a, b) {
  * @param {*} props
  * @returns {React.Component}
  */
-const Feed = ({ filters }) => {
+export default function Feed({ filters }) {
   const [data, setData] = React.useState([]);
   const [results, setResults] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
@@ -67,17 +68,14 @@ const Feed = ({ filters }) => {
             ?.toLowerCase()
             .toLowerCase()
             .includes(filters.query.toLowerCase()),
+      )
+      ?.filter(
+        (res) =>
+          !filters.minFoundingDate ||
+          !filters.maxFoundingDate ||
+          (new Date(res?.founded)?.getFullYear() >= filters.minFoundingDate &&
+            new Date(res?.founded)?.getFullYear() <= filters.maxFoundingDate),
       );
-
-    // TODO: Add dates to models and enable filtering
-    // filter by founding date
-    // ?.filter(
-    //   (res) =>
-    //     filter.minFoundingDate ||
-    //     filter.maxFoundingDate ||
-    //     (res?.founded >= filter.minFoundingDate &&
-    //       res?.founded <= filter.maxFoundingDate),
-    // );
 
     setResults(filteredResults);
   }, [
@@ -93,19 +91,19 @@ const Feed = ({ filters }) => {
     <section className={styles.feedBox}>
       {!isLoading ? (
         <p>
-          {results.length} result{results.length !== 1 && 's'}{' '}
+          {results?.length ?? 0} result{(results?.length ?? 0) !== 1 && 's'}{' '}
           {filters.query && `for '${filters.query}'`}
         </p>
       ) : (
         <p>Loading...</p>
       )}
       {!isLoading
-        ? results.map((res) => (
+        ? results?.map((res) => (
             <OrgCard key={res.id} org={res} query={filters.query} />
           ))
-        : new Array(2).fill(<OrgCard skeleton />)}
+        : new Array(2).fill(0).map((_, idx) => <OrgCard key={idx} skeleton />)}
     </section>
   );
-};
+}
 
-export default Feed;
+export const getServerSideProps = withPageAuthRequired();

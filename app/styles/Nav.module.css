@@ -22,6 +22,7 @@
   padding: 0;
   margin: 0;
   height: 100%;
+  display: flex;
 }
 
 .navLinks > li {
@@ -29,7 +30,8 @@
   height: 100%;
 }
 
-.navLinks > li > a {
+.navLinks > li a,
+.fakeLink {
   display: flex;
   height: 100%;
   padding: 0 19px;
@@ -38,15 +40,68 @@
   font-family: 'Montserrat';
   text-transform: uppercase;
   font-weight: 600;
-  color: textColor;
-  opacity: 0.6;
+  color: #3c3c3c99;
+}
+
+.fakeLink {
+  cursor: default;
+}
+
+.fakeLink > img,
+.fakePicture {
+  width: 32px;
+  height: 32px;
+  margin-right: 9px;
+  border-radius: 50%;
+}
+
+.fakePicture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: foundersOrange;
+  color: white;
 }
 
 .navLinks > li:last-child {
   margin-right: 11px;
 }
 
-.navLinks > li > a.active {
+.navLinks > li a.active {
   opacity: 1;
   color: foundersOrange;
+}
+
+.dropdown {
+  position: relative;
+  height: 100%;
+}
+
+.dropdown > div {
+  position: absolute;
+  top: 100%;
+  /* padding: 38px; */
+  background: pureWhiteColor;
+  display: none;
+  width: min(14ch, 100vw);
+  right: 0;
+}
+
+.dropdown:hover > div {
+  display: block;
+  border: 1px solid borderColor;
+}
+
+.dropdown:hover > div > a:first-child {
+  border-top: none;
+}
+
+.dropdown:hover > div > a {
+  padding: 9px 0;
+  border-top: 1px solid borderColor;
+}
+
+.dropdown:hover > div > a:hover {
+  background: foundersOrange;
+  color: white;
 }
