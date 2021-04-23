@@ -1,13 +1,10 @@
 @value colors: "./colors.css";
 @value textColor, borderColor from colors;
-@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"); 
-
+@import url('//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css');
 
 .center {
-  margin: 0 auto; 
+  margin: 0 auto;
 }
-
-
 
 .desc {
   margin: 0 0 40px;
@@ -36,5 +33,3 @@
   margin-bottom: calc(1em + 4px);
   opacity: 0.6;
 }
-
-

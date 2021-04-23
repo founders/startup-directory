@@ -2,6 +2,7 @@ import React from 'react';
 import styles from '../../styles/Account.module.css';
 import AccountContext from '../../utils/AccountContext';
 import OrgSelection from './OrgSelection';
+import Form from '../../components/Form';
 
 const STAGES = Object.freeze({
   DEFAULT: 'DEFAULT',
@@ -14,6 +15,27 @@ export default function Onboarding({ user }) {
   const [selectedToJoin, setSelectedToJoin] = React.useState(undefined);
 
   const { account, setAccount } = React.useContext(AccountContext);
+
+  const handleSubmitOrg = async (submission) => {
+    const { formData } = submission;
+
+    const res = await fetch('/api/accounts/org', {
+      method: 'POST',
+      body: JSON.stringify({
+        email: user.email,
+        org: {
+          ...formData,
+          email: user.email,
+        },
+      }),
+    });
+    const json = await res.json();
+    if (json?.data?.id) {
+      setAccount({ ...account, orgId: json.data.id });
+    } else {
+      console.error('Post Failed');
+    }
+  };
 
   let content = (
     <div className={styles.actionGrid}>
@@ -53,7 +75,7 @@ export default function Onboarding({ user }) {
       );
       break;
     case STAGES.CREATION:
-      content = <>FORM HERE</>;
+      content = <Form onSubmit={handleSubmitOrg} />;
     default:
       break;
   }
@@ -64,56 +86,30 @@ export default function Onboarding({ user }) {
       {stage !== STAGES.DEFAULT && (
         <header className={styles.onboardingHeader}>
           <button onClick={() => setStage(STAGES.DEFAULT)}>&larr; Back</button>
-          {getRightButton(stage)}
+          {{
+            [STAGES.JOINING]: (
+              <button
+                className={styles.onboardingButtonSmall}
+                disabled={!selectedToJoin}
+              >
+                {!selectedToJoin ? (
+                  'Select an existing startup'
+                ) : (
+                  <>{`Request to Join ${selectedToJoin?.name} `}&rarr;</>
+                )}
+              </button>
+            ),
+            [STAGES.CREATION]: (
+              <button
+                className={styles.onboardingButtonSmall}
+                onClick={handleSubmitOrg}
+              >
+                Submit
+              </button>
+            ),
+          }[stage] ?? <></>}
         </header>
       )}
     </>
   );
-
-  function getRightButton(stage) {
-    const handleSubmitOrg = async () => {
-      const res = await fetch('/api/accounts/org', {
-        method: 'POST',
-        body: JSON.stringify({
-          email: user.email,
-          org: {
-            name: 'apple',
-            email: 'apple@google.com',
-            description: 'we overcharge for computers',
-            founded: '5/12/2020',
-          },
-        }),
-      });
-      const json = await res.json();
-      if (json?.id) {
-        setAccount({ ...account, ordId: json.id });
-      }
-    };
-    switch (stage) {
-      case STAGES.JOINING:
-        return (
-          <button
-            className={styles.onboardingButtonSmall}
-            disabled={!selectedToJoin}
-          >
-            {!selectedToJoin ? (
-              'Select an existing startup'
-            ) : (
-              <>{`Request to Join ${selectedToJoin?.name} `}&rarr;</>
-            )}
-          </button>
-        );
-      case STAGES.CREATION:
-        return (
-          <button
-            className={styles.onboardingButtonSmall}
-            onClick={handleSubmitOrg}
-          >
-            Submit
-          </button>
-        );
-      default:
-        return <></>;
-    }
-  }
 }

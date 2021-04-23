@@ -81,13 +81,15 @@ export default function Org() {
                 />
                 <ul className={styles.statsList}>
                   <li>
-                    <h4>Stage:</h4> {org.stage}
+                    <h4>Stage:</h4> {org.stage ?? 'Pre-Seed'}
                   </li>
                   <li>
-                    <h4>Founded:</h4> {org.founded ?? '??'}
+                    <h4>Founded:</h4>{' '}
+                    {(org.founded && new Date(org.founded).getFullYear()) ??
+                      '??'}
                   </li>
                   <li>
-                    <h4>Employees:</h4> {org.size ?? '??'}
+                    <h4>Employees:</h4> {org.size ?? '1-10'}
                   </li>
                 </ul>
               </>
@@ -98,32 +100,36 @@ export default function Org() {
           <div className="card">
             <h2>Contact</h2>
             {(!isLoading && org?.email && (
-              <a href="mailto:${org.email}">{org.email}</a>
+              <a href={`mailto:${org.email}`}>{org.email}</a>
             )) || <Skeleton />}
           </div>
-          <div className="card">
-            <h2>People</h2>
-            {((!isLoading && org?.founders) || [undefined]).map((f) => (
-              <div className={styles.logoWrapper}>
-                {f !== undefined ? (
-                  <img
-                    src={f.logo ?? 'https://picsum.photos/seed/picsum/300/300'}
-                    alt={f.name ?? '??'}
-                  />
-                ) : (
-                  <Skeleton
-                    height={79}
-                    width={79}
-                    style={{ marginRight: '18px' }}
-                  />
-                )}
-                <div>
-                  <h4>{(!isLoading && f?.name) || <Skeleton />}</h4>
-                  <p>{(!isLoading && f?.title) || <Skeleton />}</p>
+          {(isLoading || org?.founders?.length > 0) && (
+            <div className="card">
+              <h2>People</h2>
+              {((!isLoading && org?.founders) || [undefined]).map((f) => (
+                <div className={styles.logoWrapper}>
+                  {f !== undefined ? (
+                    <img
+                      src={
+                        f.logo ?? 'https://picsum.photos/seed/picsum/300/300'
+                      }
+                      alt={f.name ?? '??'}
+                    />
+                  ) : (
+                    <Skeleton
+                      height={79}
+                      width={79}
+                      style={{ marginRight: '18px' }}
+                    />
+                  )}
+                  <div>
+                    <h4>{(!isLoading && f?.name) || <Skeleton />}</h4>
+                    <p>{(!isLoading && f?.title) || <Skeleton />}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </aside>
         <article className={styles.orgArticle}>
           <h1>{(!isLoading && org?.name) || <Skeleton width={425} />}</h1>
@@ -138,7 +144,7 @@ export default function Org() {
             </div>
           )}
           {/*!isLoading && org?.jobs && */}
-          {true && (
+          {false && (
             <>
               <h2>Jobs</h2>
               <JobCard />

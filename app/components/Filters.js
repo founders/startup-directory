@@ -93,7 +93,8 @@ const Filters = ({ filters, updateFilters }) => {
           }}
           activeDotStyle={{
             backgroundClip: '#F89620',
-            borderColor: '#F89620',
+            borderTop: '5px solid #F89620',
+            borderBottom: '5px solid #F89620',
           }}
           railStyle={{
             // backgroundColor: '#C4C4C4',

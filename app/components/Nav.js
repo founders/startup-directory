@@ -33,7 +33,7 @@ const Nav = () => {
           </Link>
         </li>
         <li>
-          {user?.name ? (
+          {user && (
             <div className={styles.dropdown}>
               <span className={styles.fakeLink}>
                 {user?.picture ? (
@@ -63,10 +63,6 @@ const Nav = () => {
                 </Link>
               </div>
             </div>
-          ) : (
-            <Link href="/api/auth/login" activeClassName="active-link" exact>
-              Login
-            </Link>
           )}
         </li>
       </ul>

@@ -1,4 +1,5 @@
 import '../styles/globals.css';
+import '../styles/forms.css';
 import '../styles/tagify.css';
 
 import React from 'react';
@@ -27,10 +28,7 @@ const GetAccount = () => {
   React.useEffect(() => {
     (async function () {
       if (!user) return;
-      const response = await fetch('/api/accounts/', {
-        method: 'POST',
-        body: JSON.stringify({ email: user.email }),
-      });
+      const response = await fetch(`/api/accounts/byemail/${user.email}`);
       const json = await response.json();
       if (account === undefined) {
         setAccount?.(json.data);

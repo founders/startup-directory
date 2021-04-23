@@ -41,7 +41,6 @@ export default function Feed({ filters }) {
       .then((res) => res.json())
       .then((json) => {
         json.data && setData(json.data);
-        console.log(json.data.map((el) => el.id));
         setIsLoading(false);
       })
       .catch((e) => {
@@ -69,17 +68,14 @@ export default function Feed({ filters }) {
             ?.toLowerCase()
             .toLowerCase()
             .includes(filters.query.toLowerCase()),
+      )
+      ?.filter(
+        (res) =>
+          !filters.minFoundingDate ||
+          !filters.maxFoundingDate ||
+          (new Date(res?.founded)?.getFullYear() >= filters.minFoundingDate &&
+            new Date(res?.founded)?.getFullYear() <= filters.maxFoundingDate),
       );
-
-    // TODO: Add dates to models and enable filtering
-    // filter by founding date
-    // ?.filter(
-    //   (res) =>
-    //     filter.minFoundingDate ||
-    //     filter.maxFoundingDate ||
-    //     (res?.founded >= filter.minFoundingDate &&
-    //       res?.founded <= filter.maxFoundingDate),
-    // );
 
     setResults(filteredResults);
   }, [
@@ -95,17 +91,17 @@ export default function Feed({ filters }) {
     <section className={styles.feedBox}>
       {!isLoading ? (
         <p>
-          {results.length} result{results.length !== 1 && 's'}{' '}
+          {results?.length ?? 0} result{(results?.length ?? 0) !== 1 && 's'}{' '}
           {filters.query && `for '${filters.query}'`}
         </p>
       ) : (
         <p>Loading...</p>
       )}
       {!isLoading
-        ? results.map((res) => (
+        ? results?.map((res) => (
             <OrgCard key={res.id} org={res} query={filters.query} />
           ))
-        : new Array(2).fill(<OrgCard skeleton />)}
+        : new Array(2).fill(0).map((_, idx) => <OrgCard key={idx} skeleton />)}
     </section>
   );
 }

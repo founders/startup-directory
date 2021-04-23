@@ -10,13 +10,8 @@ import { getNewOrgId } from '../../../middleware/helpers';
  */
 async function handler(req, res) {
   try {
-    const {
-      query: { accountId },
-      method,
-    } = req;
-
-    // const { user } = userUser();
-    // const email = user.email;
+    const { method, body: bodyString } = req;
+    const { email, org } = JSON.parse(bodyString);
 
     await dbConnect();
 
@@ -28,7 +23,6 @@ async function handler(req, res) {
       */
       case 'POST':
         try {
-          const { email, org } = JSON.parse(req.body);
           const account = await Account.findOne({ email });
           // no account in database matches authenticated user
           if (!account) {
@@ -50,7 +44,11 @@ async function handler(req, res) {
             id,
           });
 
-          await Account.updateOne({ email }, { orgId: id }, { upsert: false });
+          await Account.findOneAndUpdate(
+            { email },
+            { orgId: id },
+            { upsert: false },
+          );
           res.status(201).json({ success: true, data: createOrg });
         } catch (error) {
           console.error(error);
@@ -73,10 +71,16 @@ async function handler(req, res) {
               .json({ success: false, message: 'no associated organization' });
           }
 
-          //$set: change only the fields provided; upsert: don't insert a new document if one isn't found
-          const org = await Org.updateOne(
+          const bodyObj = JSON.parse(req.body);
+
+          if (bodyObj.email) {
+            delete bodyObj.email;
+          }
+
+          // $set: change only the fields provided; upsert: don't insert a new document if one isn't found
+          const org = await Org.findOneAndUpdate(
             { id: account?.orgId },
-            { $set: req.body },
+            { $set: bodyObj },
             { upsert: false },
           );
 

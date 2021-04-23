@@ -5,6 +5,7 @@ import styles from '../../styles/Account.module.css';
 import Skeleton from 'react-loading-skeleton';
 import { useUser } from '@auth0/nextjs-auth0';
 import AccountContext from '../../utils/AccountContext';
+import Form from '../../components/Form';
 
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 
@@ -24,11 +25,22 @@ function Account() {
     return null;
   }
 
-  React.useEffect(() => {
-    console.log(account);
-  }, [account]);
+  const handleFormSubmit = async (submission) => {
+    const { formData: data } = submission;
+    console.log(data);
+    const res = await fetch('/api/accounts/org', {
+      method: 'PATCH',
+      body: JSON.stringify({ ...data, email: account.email }),
+    });
+    const json = await res.json();
+    setIsLoading(false);
+  };
 
-  let content = <>test</>;
+  let content = (
+    <>
+      <Form onSubmit={handleFormSubmit} account={account} />
+    </>
+  );
   // show actions for accounts with no associated organizations
   if (!account?.orgId) {
     content = <Onboarding user={user} />;
