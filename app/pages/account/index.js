@@ -27,7 +27,6 @@ function Account() {
 
   const handleFormSubmit = async (submission) => {
     const { formData: data } = submission;
-    console.log(data);
     const res = await fetch('/api/accounts/org', {
       method: 'PATCH',
       body: JSON.stringify({ ...data, email: account.email }),

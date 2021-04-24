@@ -4,7 +4,6 @@ import Account from '../../../../models/Account';
 
 /**
  * Returns one 'organization' document, may be null
- *
  */
 async function handler(req, res) {
   try {

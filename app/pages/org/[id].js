@@ -49,7 +49,9 @@ export default function Org() {
             <div className={styles.logoWrapper}>
               {!isLoading ? (
                 <img
-                  src={org?.logo ?? 'https://picsum.photos/seed/picsum/300/300'}
+                  src={
+                    org?.avatar ?? 'https://picsum.photos/seed/picsum/300/300'
+                  }
                   alt={`${org?.name} Logo`}
                 />
               ) : (
@@ -81,7 +83,7 @@ export default function Org() {
                 />
                 <ul className={styles.statsList}>
                   <li>
-                    <h4>Stage:</h4> {org.stage ?? 'Pre-Seed'}
+                    <h4>Stage:</h4> {org.stage ?? ''}
                   </li>
                   <li>
                     <h4>Founded:</h4>{' '}
@@ -89,7 +91,7 @@ export default function Org() {
                       '??'}
                   </li>
                   <li>
-                    <h4>Employees:</h4> {org.size ?? '1-10'}
+                    <h4>Employees:</h4> {org.size ?? ''}
                   </li>
                 </ul>
               </>
@@ -111,7 +113,7 @@ export default function Org() {
                   {f !== undefined ? (
                     <img
                       src={
-                        f.logo ?? 'https://picsum.photos/seed/picsum/300/300'
+                        f.avatar ?? 'https://picsum.photos/seed/picsum/300/300'
                       }
                       alt={f.name ?? '??'}
                     />

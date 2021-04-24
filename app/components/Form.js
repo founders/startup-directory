@@ -1,9 +1,15 @@
 import React from 'react';
 import JSONSchemaForm from 'react-jsonschema-form';
+import { STAGES, CATEGORIES, SIZES } from '../utils/constants';
 
 const postSchema = {
   type: 'object',
   properties: {
+    avatar: {
+      type: 'string',
+      format: 'data-url',
+      title: 'Startup Avatar (square image)',
+    },
     name: {
       title: 'Startup Name',
       type: 'string',
@@ -17,6 +23,23 @@ const postSchema = {
       type: 'string',
       format: 'date',
     },
+    categories: {
+      title: 'Industry',
+      type: 'string',
+      enum: CATEGORIES,
+    },
+    stage: {
+      title: 'Stage',
+      type: 'string',
+      enum: STAGES,
+      default: STAGES[0],
+    },
+    size: {
+      title: 'Size',
+      type: 'string',
+      enum: SIZES,
+      default: SIZES[0],
+    },
     founders: {
       type: 'array',
       default: [],
@@ -25,6 +48,11 @@ const postSchema = {
         type: 'object',
         required: ['name', 'email', 'title'],
         properties: {
+          avatar: {
+            type: 'string',
+            format: 'data-url',
+            title: 'Founder Avatar (square image)',
+          },
           name: {
             type: 'string',
             title: 'Founder Name',
@@ -42,7 +70,7 @@ const postSchema = {
       },
     },
   },
-  required: ['name', 'description', 'founded'],
+  required: ['name', 'description', 'founded', 'stage', 'categories', 'size'],
 };
 
 export default function Form({ onSubmit, account }) {
@@ -59,14 +87,17 @@ export default function Form({ onSubmit, account }) {
       if (json.data) {
         const newSchema = { ...postSchema };
 
-        const { founders, name, description, founded } = json.data;
+        const upstreamKeys = Object.keys(json.data);
+        const existingKeys = Object.keys(newSchema.properties);
 
-        newSchema.properties.founders.default = founders;
-        newSchema.properties.name.default = name;
-        newSchema.properties.founded.default = new Date(founded)
+        for (const key of upstreamKeys) {
+          if (existingKeys.includes(key)) {
+            newSchema.properties[key].default = json.data[key];
+          }
+        }
+        newSchema.properties.founded.default = new Date(json.data.founded)
           .toISOString()
           .slice(0, 10);
-        newSchema.properties.description.default = description;
 
         setSchema(newSchema);
         setIsLoading(false);

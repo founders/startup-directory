@@ -60,7 +60,7 @@ const OrgSelection = ({ updateSelected }) => {
                 <span>
                   <img
                     src={
-                      org.logo ?? `https://picsum.photos/seed/picsum/300/300`
+                      org.avatar ?? `https://picsum.photos/seed/picsum/300/300`
                     }
                     alt={`${org.name} Logo`}
                   />
