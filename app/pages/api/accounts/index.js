@@ -18,7 +18,6 @@ async function handler(req, res) {
 
           const maybeAccount = await Account.findOne({ email });
           if (maybeAccount) {
-            console.log('exists');
             return res.status(409).json({ success: true, data: maybeAccount });
           }
 
@@ -27,7 +26,6 @@ async function handler(req, res) {
             orgId: undefined,
             isAdmin: false,
           });
-          console.log('created');
 
           res.status(201).json({ success: true, data: createdAccount });
         } catch (error) {

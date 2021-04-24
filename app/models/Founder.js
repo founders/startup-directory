@@ -1,6 +1,9 @@
 import mongoose, { Schema } from 'mongoose';
 
 const FounderSchema = new Schema({
+  avatar: {
+    type: String,
+  },
   name: {
     type: String,
     required: true,

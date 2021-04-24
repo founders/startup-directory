@@ -1,5 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 import Founder from './Founder';
+import { CATEGORIES, SIZES, STAGES } from '../utils/constants';
 
 const FounderSchema = Founder.schema;
 
@@ -7,6 +8,9 @@ const OrgSchema = new Schema({
   id: {
     type: String,
     required: true,
+  },
+  avatar: {
+    type: String,
   },
   name: {
     type: String,
@@ -18,6 +22,21 @@ const OrgSchema = new Schema({
   },
   description: {
     type: String,
+    required: true,
+  },
+  categories: {
+    type: [String],
+    enum: CATEGORIES,
+    required: true,
+  },
+  stage: {
+    type: String,
+    enum: STAGES,
+    required: true,
+  },
+  size: {
+    type: String,
+    enum: SIZES,
     required: true,
   },
   founded: {
@@ -35,6 +54,7 @@ const OrgSchema = new Schema({
           type: String,
           required: true,
         },
+
         description: {
           type: String,
           required: true,

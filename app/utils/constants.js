@@ -26,6 +26,24 @@ export const CATEGORIES = Object.freeze(
   ].sort((a, b) => a.localeCompare(b)),
 );
 
+/** @constant {Array<string>} */
+export const STAGES = Object.freeze([
+  'Pre-Seed',
+  'Seed',
+  'Series A',
+  'Series B',
+  'Series C',
+  'Late-Stage',
+]);
+
+/** @constant {Array<string>} */
+export const SIZES = Object.freeze([
+  '1-10 Employees',
+  '11-50 Employees',
+  '51-100 Employees',
+  '100+ Employees',
+]);
+
 /** @constant {Object<string, string>} */
 export const TAG_COLORS = Object.freeze({
   BLUE: '',

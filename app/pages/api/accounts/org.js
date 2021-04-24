@@ -39,10 +39,13 @@ async function handler(req, res) {
           }
 
           const id = getNewOrgId(org.name);
+
           const createOrg = await Org.create({
             ...org,
             id,
           });
+
+          // TODO: Catch this break point (we'll have a dataleak for an org if the subsequent request fails)
 
           await Account.findOneAndUpdate(
             { email },
@@ -103,7 +106,6 @@ async function handler(req, res) {
         break;
     }
   } catch (error) {
-    console.log('hewo');
     console.error(error);
     res.status(error.status || 500).json({
       code: error.code,
