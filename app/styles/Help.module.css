@@ -1,0 +1,64 @@
+@value colors: "./colors.css";
+@value borderColor from colors;
+@value textColor from colors;
+@value pureWhiteColor from colors;
+@value foundersOrange from colors;
+
+.helpWrapper {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  min-height: 81vh;
+  margin-bottom: -18px;
+  width: 100%;
+}
+
+.helpWrapper > div * {
+  white-space: pre-wrap;
+}
+
+.helpWrapper h1 {
+  font-size: 28px;
+  text-transform: uppercase;
+  margin: 50px 0 15px;
+}
+
+.helpWrapper > aside {
+  margin-right: 18px;
+  border-right: 1px solid borderColor;
+  height: 100%;
+  padding-top: 50px;
+}
+
+.helpWrapper > aside h2 {
+  margin: 0.5em 0 2em;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.helpWrapper > aside > ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.helpWrapper > aside > ul > li > a {
+  display: block;
+  padding: 0.5em 0;
+  position: relative;
+  padding-right: 1px;
+  margin-right: -1px;
+}
+
+.helpWrapper > aside > ul > li > a:hover {
+  border-right: 3px solid borderColor;
+}
+
+.activeLink {
+  border-right: 3px solid foundersOrange;
+}
+
+.helpWrapper > aside > ul > li + li {
+  border-top: 1px solid borderColor;
+}

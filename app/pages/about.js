@@ -1,18 +1,23 @@
 import React from 'react';
+import matter from 'gray-matter';
+import ReactMarkdown from 'react-markdown';
 
 import Layout from '../components/Layout';
 
-export default function About() {
+function About({ content }) {
   return (
     <Layout title="About">
-      {new Array(3).fill('').map((_, idx) => (
-        <p key={'about-p-' + idx}>
-          {`Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat vitae
-          reiciendis cumque perspiciatis autem, amet officiis corrupti
-          recusandae id, debitis, hic unde doloremque quod! Illo iusto unde
-          atque tenetur laborum.`.repeat(Math.random() * 3 + 2)}
-        </p>
-      ))}
+      <span className="markdown">
+        <ReactMarkdown children={content} />
+      </span>
     </Layout>
   );
 }
+
+About.getInitialProps = async () => {
+  const { default: file } = await import(`../content/about.md`);
+  const { content } = matter(file);
+  return { content };
+};
+
+export default About;

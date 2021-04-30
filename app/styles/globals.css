@@ -33,6 +33,11 @@ a {
   text-decoration: none;
 }
 
+.markdown a {
+  color: #f89620;
+  text-decoration: underline;
+}
+
 * {
   box-sizing: border-box;
 }

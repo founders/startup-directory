@@ -99,12 +99,12 @@ export default function Org() {
               <Skeleton count={5} />
             )}
           </div>
-          <div className="card">
+          {/* <div className="card">
             <h2>Contact</h2>
             {(!isLoading && org?.email && (
               <a href={`mailto:${org.email}`}>{org.email}</a>
             )) || <Skeleton />}
-          </div>
+          </div> */}
           {(isLoading || org?.founders?.length > 0) && (
             <div className="card">
               <h2>People</h2>
@@ -136,7 +136,10 @@ export default function Org() {
         <article className={styles.orgArticle}>
           <h1>{(!isLoading && org?.name) || <Skeleton width={425} />}</h1>
           {!isLoading ? (
-            org?.description.split('\n').map((p) => <p>{p}</p>)
+            (org?.biography ?? '')
+              .split('\n')
+              .filter((p) => !!p)
+              .map((p) => <p>{p}</p>)
           ) : (
             <div style={{ lineHeight: 1.75, marginTop: '11px' }}>
               <Skeleton count={Math.random() * 3 + 2} />

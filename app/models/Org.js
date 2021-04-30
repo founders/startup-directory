@@ -24,6 +24,10 @@ const OrgSchema = new Schema({
     type: String,
     required: true,
   },
+  biography: {
+    type: String,
+    required: true,
+  },
   categories: {
     type: [String],
     enum: CATEGORIES,
