@@ -13,10 +13,14 @@ const postSchema = {
     name: {
       title: 'Startup Name',
       type: 'string',
+      maxLength: 3,
+      maxLength: 60,
     },
     description: {
       type: 'string',
       title: 'Start-Up Description',
+      minLength: 20,
+      maxLength: 160,
     },
     founded: {
       title: 'Date Founded',
@@ -27,6 +31,7 @@ const postSchema = {
       title: 'Industry',
       type: 'string',
       enum: CATEGORIES,
+      default: CATEGORIES[0],
     },
     stage: {
       title: 'Stage',
@@ -39,6 +44,11 @@ const postSchema = {
       type: 'string',
       enum: SIZES,
       default: SIZES[0],
+    },
+    biography: {
+      title: 'Biography',
+      type: 'string',
+      minLength: 150,
     },
     founders: {
       type: 'array',
@@ -70,9 +80,31 @@ const postSchema = {
       },
     },
   },
-  required: ['name', 'description', 'founded', 'stage', 'categories', 'size'],
+  required: [
+    'name',
+    'description',
+    'founded',
+    'stage',
+    'categories',
+    'size',
+    'biography',
+  ],
 };
 
+const uiSchema = {
+  description: {
+    'ui:description':
+      'A brief description of your startup between 20 and 160 characters.',
+  },
+  biography: {
+    'ui:widget': 'textarea',
+    'ui:description':
+      'A long description of your mission, history, and anything else you would like to mention. (min 150 chars)',
+  },
+  founders: {
+    'ui:description': 'Add the founders of your organization.',
+  },
+};
 export default function Form({ onSubmit, account }) {
   const [isLoading, setIsLoading] = React.useState(true);
   const [schema, setSchema] = React.useState(postSchema);
@@ -92,7 +124,11 @@ export default function Form({ onSubmit, account }) {
 
         for (const key of upstreamKeys) {
           if (existingKeys.includes(key)) {
-            newSchema.properties[key].default = json.data[key];
+            let upstream = json.data[key];
+            if (key === 'categories') {
+              upstream = upstream[0];
+            }
+            newSchema.properties[key].default = upstream;
           }
         }
         newSchema.properties.founded.default = new Date(json.data.founded)
@@ -116,7 +152,11 @@ export default function Form({ onSubmit, account }) {
   return (
     <div class="container">
       <div className="col-md-offset-8 col-md-7">
-        <JSONSchemaForm onSubmit={onSubmit} schema={schema} />
+        <JSONSchemaForm
+          onSubmit={onSubmit}
+          schema={schema}
+          uiSchema={uiSchema}
+        />
       </div>
     </div>
   );

@@ -46,7 +46,8 @@ fieldset label {
 }
 
 fieldset input,
-select.form-control {
+select.form-control,
+.form-group.field.field-string textarea {
   width: 100%;
   margin-bottom: 1em;
   box-sizing: border-box;
@@ -108,4 +109,9 @@ select.form-control {
 .form-group.field.field-string input[type='file'] {
   margin: 0;
   padding: 0;
+}
+
+.form-group.field.field-string textarea {
+  resize: vertical;
+  min-height: 4em;
 }

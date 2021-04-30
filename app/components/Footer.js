@@ -27,7 +27,7 @@ export default function Footer() {
           </Link>
         )}{' '}
         &middot;{' '}
-        <Link href="/help" exact>
+        <Link href="/help/getting-registered" exact>
           <a>Help/Support</a>
         </Link>
       </p>

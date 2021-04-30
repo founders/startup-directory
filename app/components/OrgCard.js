@@ -60,7 +60,12 @@ export default function OrgCard({ org, skeleton }) {
           )}
         </h3>
         <p>{org.description}</p>
-        <Tags tags={org.categories ?? []} />
+        <Tags
+          tags={[
+            `Founded ${new Date(org.founded).getFullYear()}`,
+            ...(org.categories ?? []),
+          ]}
+        />
       </div>
       <Link href={`/org/${org.id}`}>
         <a>
