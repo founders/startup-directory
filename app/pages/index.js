@@ -16,13 +16,10 @@ export default function Home() {
   return (
     <Layout>
       <p className={styles.desc}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
+      The Startup Directory is Founders' attempt at unifying startups on campus. 
+      Startups can register with the directory and upload information about themselves for the world to see. 
+      As more and more students attend Founders events and begin creating their own ventures, our directory will contain 
+      more information about the greater entrepreneurship community. Click into any of the listed startups to learn more about them.
       </p>
       <div className={styles.directoryWrapper}>
         <div className={styles.leftWrapper}>
