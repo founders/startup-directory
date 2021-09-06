@@ -3,183 +3,21 @@ title: 'Getting Registered'
 date: '2021-24-01'
 ---
 
-[View raw (TEST.md)](https://raw.github.com/adamschwartz/github-markdown-kitchen-sink/master/README.md)
+Registering your Startup with the Founders Startup Directory has never been easier.
 
-This is a paragraph.
+## Step 1: Confirming Your Email
+The Founders Startup Directory requires users to validate their email address and startup name before we allow you to create an account with us. To do so, fill out [this form](https://forms.gle/i9mPTqByaueSQi1KA) to request a spot on our email whitelist. You will recieve an email as soon as possible with either an acceptance or rejection to whitelist this email.
 
-    This is a paragraph.
+If your request is accepted, [sign in](/api/auth/login) with the same email to create an account. Otherwise, feel free to reach out to us with an appeal.
 
-# Header 1
+## Step 2: Creating an Account
+Once your email has been whitelisted, you can create an account by [signing in](/api/auth/login) with Google. The email that you register with should be the same one that we whitelisted. Upon creating an account, you can either **join an existing startup** or **create a new startup**.
 
-## Header 2
+### Joining An Existing Startup
+To join an existing startup, simply request access by searching for your startup and clicking "Request to Join *Startup*". The owner of the startup page will recieve a request for you to join their organization, and they can either accept or reject your request to join.
 
-    Header 1
-    ========
+### Creating An Existing Startup
+To create a new startup, you can click "Create A Page" on the onboarding screen and follow the registration form to load information about your startup. You will have to fill out some information regarding your startup, such as your startups name, description, logo, hiring status, etc.
 
-    Header 2
-    --------
-
-# Header 1
-
-## Header 2
-
-### Header 3
-
-#### Header 4
-
-##### Header 5
-
-###### Header 6
-
-    # Header 1
-    ## Header 2
-    ### Header 3
-    #### Header 4
-    ##### Header 5
-    ###### Header 6
-
-# Header 1
-
-## Header 2
-
-### Header 3
-
-#### Header 4
-
-##### Header 5
-
-###### Header 6
-
-    # Header 1 #
-    ## Header 2 ##
-    ### Header 3 ###
-    #### Header 4 ####
-    ##### Header 5 #####
-    ###### Header 6 ######
-
-> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
-
-    > Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
-
-> ## This is a header.
->
-> 1. This is the first list item.
-> 2. This is the second list item.
->
-> Here's some example code:
->
->     Markdown.generate();
-
-    > ## This is a header.
-    > 1. This is the first list item.
-    > 2. This is the second list item.
-    >
-    > Here's some example code:
-    >
-    >     Markdown.generate();
-
-- Red
-- Green
-- Blue
-
-* Red
-* Green
-* Blue
-
-- Red
-- Green
-- Blue
-
-```markdown
-- Red
-- Green
-- Blue
-
-* Red
-* Green
-* Blue
-
-- Red
-- Green
-- Blue
-```
-
-1. Buy flour and salt
-1. Mix together with water
-1. Bake
-
-```markdown
-1. Buy flour and salt
-1. Mix together with water
-1. Bake
-```
-
-Paragraph:
-
-    Code
-
-<!-- -->
-
-    Paragraph:
-
-        Code
-
----
-
----
-
----
-
----
-
----
-
-    * * *
-
-    ***
-
-    *****
-
-    - - -
-
-    ---------------------------------------
-
-This is [an example](http://example.com 'Example') link.
-
-[This link](http://example.com) has no title attr.
-
-This is [an example] [id] reference-style link.
-
-[id]: http://example.com 'Optional Title'
-
-    This is [an example](http://example.com "Example") link.
-
-    [This link](http://example.com) has no title attr.
-
-    This is [an example] [id] reference-style link.
-
-    [id]: http://example.com "Optional Title"
-
-_single asterisks_
-
-_single underscores_
-
-**double asterisks**
-
-**double underscores**
-
-    *single asterisks*
-
-    _single underscores_
-
-    **double asterisks**
-
-    __double underscores__
-
-This paragraph has some `code` in it.
-
-    This paragraph has some `code` in it.
-
-![Alt Text](https://get.svg.workers.dev/?s=64&f=gray 'Image Title')
-
-    ![Alt Text](https://get.svg.workers.dev/?s=64&f=gray "Image Title")
+## Step 3: Browse!
+Congradulations, you have registered with the Founders Startup Directory! Feel free to take a look at all the startups that UIUC has to offer.
