@@ -45,6 +45,19 @@ function PostPage(props) {
                 </li>
               ))}
           </ul>
+          <h2>Contact Us</h2>
+          <ul>
+            <li key="contact">
+                <Link href={'mailto:team@founders.illinois.edu'} exact>
+                  Email Founders
+                </Link>
+            </li>
+            <li key="contact">
+                <Link href={'https://foundersillinois.org'} exact>
+                  Founders Website
+                </Link>
+            </li>
+          </ul>
         </aside>
         <PostTemplate {...props} />
       </div>

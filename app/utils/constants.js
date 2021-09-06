@@ -24,6 +24,12 @@ export const CATEGORIES = Object.freeze(
     'Research',
     'Software',
     'Entertainment',
+    'Education',
+    'Technology',
+    'Sports',
+    'Arts',
+    'Non-profit',
+    'Consumer Goods',
     'Other'
   ].sort((a, b) => a.localeCompare(b)),
 );
