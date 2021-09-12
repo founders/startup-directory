@@ -32,7 +32,6 @@ function Account() {
       body: JSON.stringify({ ...data, email: account.email }),
     });
     const json = await res.json();
-    console.log(json);
     setIsLoading(false);
   };
 
