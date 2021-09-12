@@ -150,7 +150,7 @@ export default function Form({ onSubmit, account }) {
   }
 
   return (
-    <div class="container">
+    <div className="container">
       <div className="col-md-offset-8 col-md-7">
         <JSONSchemaForm
           onSubmit={onSubmit}

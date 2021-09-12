@@ -29,6 +29,11 @@
   box-sizing: border-box;
 }
 
+.btn.btn-info[type='submit']:hover {
+  background-color: #f89620;
+  color: white;
+}
+
 fieldset {
   border: none;
   padding: 0;

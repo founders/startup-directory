@@ -33,7 +33,7 @@ const Filters = ({ filters, updateFilters }) => {
     <aside className={styles.filterBox}>
       <h3>Filters</h3>
       <Multiselect tags={CATEGORIES} onChange={handleCategoryChange} />
-      <p>
+      {/* <p>
         <input
           id="is-hiring"
           type="checkbox"
@@ -41,7 +41,7 @@ const Filters = ({ filters, updateFilters }) => {
           onChange={handleCheck}
         />
         <label htmlFor="is-hiring">Hiring</label>
-      </p>
+      </p> */}
       <p>
         <label htmlFor="">
           Founded{' '}
