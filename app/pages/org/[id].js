@@ -71,8 +71,8 @@ export default function Org() {
                   style={{ marginTop: '8px', marginBottom: '6px' }}
                   tagStyle={{
                     fontSize: '12px',
-                    backgroundColor: '#3c3c3c2c',
-                    color: '#3c3c3c80',
+                    backgroundColor: org.isHiring ? 'rgba(0, 117, 255, 0.12)' : '#3c3c3c2c',
+                    color: org.isHiring ? '#0075FF' : '#3c3c3c80',
                   }}
                   tags={[org.isHiring ? 'Hiring' : 'Not Looking to Hire']}
                 />
@@ -99,12 +99,13 @@ export default function Org() {
               <Skeleton count={5} />
             )}
           </div>
-          {/* <div className="card">
-            <h2>Contact</h2>
-            {(!isLoading && org?.email && (
-              <a href={`mailto:${org.email}`}>{org.email}</a>
-            )) || <Skeleton />}
-          </div> */}
+          { org?.isHiring && <div className="card">
+              <h2>Hiring Contact</h2>
+              {(!isLoading && org?.email && (
+                <a href={`mailto:${org.email}`}>{org.email}</a>
+              )) || <Skeleton />}
+            </div>
+          }
           {(isLoading || org?.founders?.length > 0) && (
             <div className="card">
               <h2>People</h2>

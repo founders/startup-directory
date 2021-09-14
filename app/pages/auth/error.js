@@ -25,6 +25,9 @@ export default function About() {
         This account is not registered. Please use the correct email or reach
         out to Founders for access.
       </p>
+      <p>
+        To register your email with us, fill out <a href="https://forms.gle/i9mPTqByaueSQi1KA">this</a> whitelist form.
+      </p>
     </Layout>
   );
 }

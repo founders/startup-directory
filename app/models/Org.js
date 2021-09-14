@@ -47,6 +47,11 @@ const OrgSchema = new Schema({
     type: Date,
     required: true,
   },
+  isHiring: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
   founders: {
     type: [FounderSchema],
     default: [],

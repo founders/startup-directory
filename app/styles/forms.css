@@ -47,7 +47,7 @@ fieldset legend {
 
 fieldset label {
   display: block;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 fieldset input,
@@ -119,4 +119,12 @@ select.form-control,
 .form-group.field.field-string textarea {
   resize: vertical;
   min-height: 4em;
+}
+
+.form-group input[type='checkbox'] {
+  height: 18px;
+  width: 18px;
+  margin: 1em 1em 1em 0em;
+  padding: 2em;
+  float: right;
 }

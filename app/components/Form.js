@@ -50,6 +50,10 @@ const postSchema = {
       type: 'string',
       minLength: 150,
     },
+    isHiring: {
+      title: 'Are You Hiring?',
+      type: 'boolean',
+    },
     founders: {
       type: 'array',
       default: [],
@@ -100,6 +104,9 @@ const uiSchema = {
     'ui:widget': 'textarea',
     'ui:description':
       'A long description of your mission, history, and anything else you would like to mention. (min 150 chars)',
+  },
+  isHiring: {
+    'ui:description': "Check the box to the right if your organization is looking to recruit.",
   },
   founders: {
     'ui:description': 'Add the founders of your organization.',

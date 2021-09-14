@@ -16,8 +16,8 @@ Once your email has been whitelisted, you can create an account by [signing in](
 ### Joining An Existing Startup
 To join an existing startup, simply request access by searching for your startup and clicking "Request to Join *Startup*". The owner of the startup page will recieve a request for you to join their organization, and they can either accept or reject your request to join.
 
-### Creating An Existing Startup
-To create a new startup, you can click "Create A Page" on the onboarding screen and follow the registration form to load information about your startup. You will have to fill out some information regarding your startup, such as your startups name, description, logo, hiring status, etc.
+### Creating A New Startup
+To create a new startup, you can click "Create A Page" on the onboarding screen and follow the registration form to load information about your startup. You will have to fill out some information regarding your startup, such as your startups name, description, logo, etc.
 
 ## Step 3: Browse!
 Congradulations, you have registered with the Founders Startup Directory! Feel free to take a look at all the startups that UIUC has to offer.
