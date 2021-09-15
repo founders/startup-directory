@@ -112,9 +112,11 @@ const uiSchema = {
     'ui:description': 'Add the founders of your organization.',
   },
 };
+
 export default function Form({ onSubmit, account }) {
   const [isLoading, setIsLoading] = React.useState(true);
   const [schema, setSchema] = React.useState(postSchema);
+  const [buttonText, setButtonText] = React.useState("Submit");
 
   React.useEffect(() => {
     (async function () {
@@ -163,7 +165,11 @@ export default function Form({ onSubmit, account }) {
           onSubmit={onSubmit}
           schema={schema}
           uiSchema={uiSchema}
-        />
+        >
+          <div>
+            <button type="submit" className={"btn btn-info btn-add"} onClick={() => setButtonText("Saved!")}>{ buttonText }</button>
+          </div>
+        </JSONSchemaForm>
       </div>
     </div>
   );

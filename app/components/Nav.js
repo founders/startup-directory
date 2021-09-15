@@ -32,6 +32,13 @@ const Nav = () => {
             About
           </Link>
         </li>
+        {!user &&
+        <li>
+          <Link href="/api/auth/login" activeClassName="active-link" exact>
+            Sign In
+          </Link>
+        </li>
+        }
         <li>
           {user && (
             <div className={styles.dropdown}>
