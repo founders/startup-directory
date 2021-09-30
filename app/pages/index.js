@@ -19,7 +19,9 @@ export default function Home() {
       The Startup Directory is Founders' attempt at unifying startups on campus. 
       Startups can register with the directory and upload information about themselves for the world to see. 
       As more and more students attend Founders events and begin creating their own ventures, our directory will contain 
-      more information about the greater entrepreneurship community. Click into any of the listed startups to learn more about them.
+      more information about the greater entrepreneurship community. Click into any of the listed startups to learn more about them. 
+      For students who are looking to work for student-led startups, contact information and job listings are available on startup
+      specific pages.
       </p>
       <div className={styles.directoryWrapper}>
         <div className={styles.leftWrapper}>
