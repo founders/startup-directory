@@ -53,6 +53,7 @@ export default function Feed({ filters }) {
     const filteredResults = data
       // filter by isHiring
       ?.filter((res) => !filters.isHiring || res?.isHiring)
+      ?.filter((res) => !res?.isHidden)
       // filter by selected tags if at least one tag selected
       ?.filter(
         (res) =>

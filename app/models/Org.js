@@ -52,6 +52,11 @@ const OrgSchema = new Schema({
     required: false,
     default: false,
   },
+  isHidden: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
   founders: {
     type: [FounderSchema],
     default: [],

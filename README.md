@@ -43,3 +43,23 @@ git push
 ### 6. Open a Pull Request
 
 Open a Pull Request on Github, assign yourself to it and tag @SirajChokshi for a review.
+
+
+# Testing Changes
+
+To test changes made to the Startup Directory, we'll use our local testing environment. The Startup Directory is deployed live through a hosting service
+called "Vercel". When we push changes to our `master` git branch, it triggers a new deploy that causes those changes to propogate to production.
+
+If we want to test changes before putting up a pull request, we can access the development server by running:
+
+```bash
+$ docker-compose up
+```
+
+Alternatively, if you don't want to use docker, we can just run this using `next` directly:
+
+```bash
+$ yarn && yarn dev
+```
+
+These will both run test instances on port 3000. Navigate to `localhost:3000` to test changes.

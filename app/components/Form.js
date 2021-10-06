@@ -54,6 +54,10 @@ const postSchema = {
       title: 'Are You Hiring?',
       type: 'boolean',
     },
+    isHidden: {
+      title: 'Hide your Profile?',
+      type: 'boolean',
+    },
     founders: {
       type: 'array',
       default: [],
