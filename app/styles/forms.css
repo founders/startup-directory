@@ -122,9 +122,9 @@ select.form-control,
 }
 
 .form-group input[type='checkbox'] {
-  height: 18px;
-  width: 18px;
-  margin: 1em 1em 1em 0em;
-  padding: 2em;
-  float: right;
+  height: 24px;
+  width: 24px;
+  margin: 0em 2em 2em 0em;
+  display: block;
+  float: left;
 }
