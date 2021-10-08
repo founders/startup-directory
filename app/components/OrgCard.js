@@ -58,6 +58,61 @@ export default function OrgCard({ org, skeleton }) {
               tags={['Hiring']}
             />
           )}
+          {org.iVenture && (
+            <Tags
+              style={{ display: 'inline-block', marginLeft: '8px' }}
+              tagStyle={{
+                marginBottom: '2.5px',
+                color: '#0075FF',
+                backgroundColor: '#0075FF1F',
+              }}
+              tags={['iVenture']}
+            />
+          )}
+          {org.Tec && (
+            <Tags
+              style={{ display: 'inline-block', marginLeft: '8px' }}
+              tagStyle={{
+                marginBottom: '2.5px',
+                color: '#0075FF',
+                backgroundColor: '#0075FF1F',
+              }}
+              tags={['TEC']}
+            />
+          )}
+          {org.Zero2One && (
+            <Tags
+              style={{ display: 'inline-block', marginLeft: '8px' }}
+              tagStyle={{
+                marginBottom: '2.5px',
+                color: '#0075FF',
+                backgroundColor: '#0075FF1F',
+              }}
+              tags={['Zero2One']}
+            />
+          )}
+          {org.Cozad && (
+            <Tags
+              style={{ display: 'inline-block', marginLeft: '8px' }}
+              tagStyle={{
+                marginBottom: '2.5px',
+                color: '#0075FF',
+                backgroundColor: '#0075FF1F',
+              }}
+              tags={['Cozad']}
+            />
+          )}
+          {org.Founders && (
+            <Tags
+              style={{ display: 'inline-block', marginLeft: '8px' }}
+              tagStyle={{
+                marginBottom: '2.5px',
+                color: '#0075FF',
+                backgroundColor: '#0075FF1F',
+              }}
+              tags={['Founders']}
+            />
+          )}
         </h3>
         <p>{org.description}</p>
         <Tags

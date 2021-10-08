@@ -54,6 +54,26 @@ const postSchema = {
       title: 'Are You Hiring?',
       type: 'boolean',
     },
+    Cozad: {
+      title: 'Are you in Cozad?',
+      type: 'boolean',
+    },
+    Zero2One: {
+      title: 'Are you in Zero2One?',
+      type: 'boolean',
+    },
+    Founders: {
+      title: 'Are you in Founders?',
+      type: 'boolean',
+    },
+    Tec: {
+      title: 'Are you in TEC?',
+      type: 'boolean',
+    },
+    iVenture: {
+      title: 'Are you in iVenture?',
+      type: 'boolean',
+    },
     founders: {
       type: 'array',
       default: [],
@@ -106,6 +126,9 @@ const uiSchema = {
       'A long description of your mission, history, and anything else you would like to mention. (min 150 chars)',
   },
   isHiring: {
+    'ui:description': "Check the box to the right if your organization is looking to recruit.",
+  },
+  Cozad: {
     'ui:description': "Check the box to the right if your organization is looking to recruit.",
   },
   founders: {

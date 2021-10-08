@@ -52,6 +52,31 @@ const OrgSchema = new Schema({
     required: false,
     default: false,
   },
+  Cozad: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+  Zero2One: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+  Tec: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+  iVenture: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+  Founders: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
   founders: {
     type: [FounderSchema],
     default: [],
