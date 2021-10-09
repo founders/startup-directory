@@ -110,7 +110,8 @@ const uiSchema = {
       'A long description of your mission, history, and anything else you would like to mention. (min 150 chars)',
   },
   isHiring: {
-    'ui:description': "Check the box to the right if your organization is looking to recruit.",
+    'ui:description':
+      'Check the box to the right if your organization is looking to recruit.',
   },
   founders: {
     'ui:description': 'Add the founders of your organization.',
@@ -120,7 +121,7 @@ const uiSchema = {
 export default function Form({ onSubmit, account }) {
   const [isLoading, setIsLoading] = React.useState(true);
   const [schema, setSchema] = React.useState(postSchema);
-  const [buttonText, setButtonText] = React.useState("Submit");
+  const [buttonText, setButtonText] = React.useState('Submit');
 
   React.useEffect(() => {
     (async function () {
@@ -165,13 +166,15 @@ export default function Form({ onSubmit, account }) {
   return (
     <div className="container">
       <div className="col-md-offset-8 col-md-7">
-        <JSONSchemaForm
-          onSubmit={onSubmit}
-          schema={schema}
-          uiSchema={uiSchema}
-        >
+        <JSONSchemaForm onSubmit={onSubmit} schema={schema} uiSchema={uiSchema}>
           <div>
-            <button type="submit" className={"btn btn-info btn-add"} onClick={() => setButtonText("Saved!")}>{ buttonText }</button>
+            <button
+              type="submit"
+              className={'btn btn-info btn-add'}
+              onClick={() => setButtonText('Saved!')}
+            >
+              {buttonText}
+            </button>
           </div>
         </JSONSchemaForm>
       </div>
