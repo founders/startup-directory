@@ -26,7 +26,11 @@ export default function About() {
         out to Founders for access.
       </p>
       <p>
-        To register your email with us, fill out this whitelist form: <a href="https://forms.gle/i9mPTqByaueSQi1KA">https://forms.gle/i9mPTqByaueSQi1KA</a>.
+        To register your email with us, fill out this whitelist form:{' '}
+        <a href="https://forms.gle/i9mPTqByaueSQi1KA">
+          https://forms.gle/i9mPTqByaueSQi1KA
+        </a>
+        .
       </p>
     </Layout>
   );
