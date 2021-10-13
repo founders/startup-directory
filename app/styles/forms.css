@@ -125,6 +125,5 @@ select.form-control,
   height: 24px;
   width: 24px;
   margin: 0em 2em 2em 0em;
-  display: block;
-  float: left;
+  vertical-align: sub; /* Aligns label text with physical checkbox */
 }
