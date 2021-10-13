@@ -13,7 +13,6 @@ export default async function handler(req, res) {
     switch (method) {
       case 'GET':
         try {
-          // const orgs = await Org.find();
           const orgs = await Org.find({ isHidden: { $ne: true } });
           if (!orgs) {
             return res
