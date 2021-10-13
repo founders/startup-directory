@@ -14,7 +14,7 @@ export default async function handler(req, res) {
       case 'GET':
         try {
           // const orgs = await Org.find();
-          const orgs = await Org.find({ "isHidden": { $ne: true }});
+          const orgs = await Org.find({ isHidden: { $ne: true } });
           if (!orgs) {
             return res
               .status(400)
