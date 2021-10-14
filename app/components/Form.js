@@ -54,10 +54,6 @@ const postSchema = {
       title: 'Are You Hiring?',
       type: 'boolean',
     },
-    isHidden: {
-      title: 'Hide your Profile?',
-      type: 'boolean',
-    },
     founders: {
       type: 'array',
       default: [],
@@ -86,6 +82,10 @@ const postSchema = {
           },
         },
       },
+    },
+    isHidden: {
+      title: 'Hide your Profile?',
+      type: 'boolean',
     },
   },
   required: [
@@ -168,11 +168,7 @@ export default function Form({ onSubmit, account }) {
       <div className="col-md-offset-8 col-md-7">
         <JSONSchemaForm onSubmit={onSubmit} schema={schema} uiSchema={uiSchema}>
           <div>
-            <button
-              type="submit"
-              className={'btn btn-info btn-add'}
-              onClick={() => setButtonText('Saved!')}
-            >
+            <button type="submit" className={'btn btn-info btn-add'}>
               {buttonText}
             </button>
           </div>
