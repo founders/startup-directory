@@ -13,17 +13,17 @@ import Onboarding from '../../components/accounts/Onboarding';
 import Layout from '../../components/Layout';
 
 function Account() {
-  const [isLoading, setIsLoading] = React.useState(true);
+  // const [isLoading, setIsLoading] = React.useState(true);
   const { user } = useUser();
 
   const router = useRouter();
 
   const { account } = React.useContext(AccountContext);
 
-  if (!isLoading && !account) {
-    router.push('/');
-    return null;
-  }
+  // if (!isLoading && !account) {
+  //   router.push('/');
+  //   return null;
+  // }
 
   const handleFormSubmit = async (submission) => {
     const { formData: data } = submission;
@@ -32,7 +32,7 @@ function Account() {
       body: JSON.stringify({ ...data, email: account.email }),
     });
     const json = await res.json();
-    setIsLoading(false);
+    // setIsLoading(false);
   };
 
   let content = (
