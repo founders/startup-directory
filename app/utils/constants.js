@@ -52,6 +52,16 @@ export const SIZES = Object.freeze([
   '100+ Employees',
 ]);
 
+/** @constant {Array<string>} */
+export const RESOURCES = Object.freeze([
+  'TEC',
+  'iVenture',
+  'Zero2One',
+  'Founders',
+  '54',
+  'Forge'
+]);
+
 /** @constant {Object<string, string>} */
 export const TAG_COLORS = Object.freeze({
   BLUE: '',

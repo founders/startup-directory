@@ -63,7 +63,7 @@ export default function OrgCard({ org, skeleton }) {
         <Tags
           tags={[
             `Founded ${new Date(org.founded).getFullYear()}`,
-            ...(org.categories ?? []),
+            ...(org.categories ?? []), ...(org.resources ?? [])
           ]}
         />
       </div>
