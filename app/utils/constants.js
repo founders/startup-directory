@@ -59,7 +59,7 @@ export const RESOURCES = Object.freeze([
   'Zero2One',
   'Founders',
   '54',
-  'Forge'
+  'Forge',
 ]);
 
 /** @constant {Object<string, string>} */
