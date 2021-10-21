@@ -126,7 +126,7 @@ export default function Org() {
                     />
                   )}
                   <div>
-                    <h4>{(!isLoading && f?.name) || <Skeleton />}</h4>
+                    <a href = {!isLoading && f?.linkedin}><h4>{(!isLoading && f?.name) || <Skeleton />}</h4></a>
                     <p>{(!isLoading && f?.title) || <Skeleton />}</p>
                   </div>
                 </div>

@@ -60,7 +60,7 @@ const postSchema = {
       title: 'Organization Founders',
       items: {
         type: 'object',
-        required: ['name', 'email', 'title'],
+        required: ['name', 'email', 'title', 'linkedin'],
         properties: {
           avatar: {
             type: 'string',
@@ -80,6 +80,11 @@ const postSchema = {
             type: 'string',
             title: 'Position Name',
           },
+          linkedin: { // ADDED
+            type: 'string',
+            format: 'url',
+            title: 'Linkedin URL'
+          }
         },
       },
     },
