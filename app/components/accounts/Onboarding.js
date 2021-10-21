@@ -3,6 +3,7 @@ import styles from '../../styles/Account.module.css';
 import AccountContext from '../../utils/AccountContext';
 import OrgSelection from './OrgSelection';
 import Form from '../../components/Form';
+import emailjs from 'emailjs-com';
 
 const STAGES = Object.freeze({
   DEFAULT: 'DEFAULT',
@@ -15,7 +16,13 @@ export default function Onboarding({ user }) {
   const [selectedToJoin, setSelectedToJoin] = React.useState(undefined);
 
   const { account, setAccount } = React.useContext(AccountContext);
-
+  
+  const formatMessage = (data) => {
+    // Edit this method to make a new string that is more readable containing changes made to the data.
+    return JSON.parse(JSON.stringify(data));
+  }
+  
+//START HERE
   const handleSubmitOrg = async (submission) => {
     const { formData } = submission;
 
@@ -32,11 +39,12 @@ export default function Onboarding({ user }) {
     const json = await res.json();
     if (json?.data?.id) {
       setAccount({ ...account, orgId: json.data.id });
+      emailjs.send('service_2cqk6gm', 'template_6z1qve1', {'message': formatMessage(data)}, 'user_4ilUAq4zJ8J7iYZTlGs2l');
     } else {
       console.error('Post Failed');
     }
   };
-
+//END HERE
   let content = (
     <div className={styles.actionGrid}>
       <div>

@@ -12,7 +12,11 @@
     "@rjsf/core": "^2.5.1",
     "@yaireo/tagify": "^3.23.1",
     "bootstrap": "3.3.0",
+    "child_process": "^1.0.2",
     "dotenv": "^8.2.0",
+    "emailjs": "^3.6.0",
+    "emailjs-com": "^3.2.0",
+    "gmail-send": "^1.8.14",
     "gray-matter": "^4.0.3",
     "mongodb": "^3.6.4",
     "mongoose": "^5.11.19",
@@ -27,5 +31,8 @@
     "react-jsonschema-form": "^1.8.1",
     "react-loading-skeleton": "^2.2.0",
     "react-markdown": "^6.0.1"
+  },
+  "browser": {
+    "child_process": false
   }
 }
