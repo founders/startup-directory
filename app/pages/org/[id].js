@@ -127,7 +127,8 @@ export default function Org() {
                   )}
                   <div>
                     <a href = {!isLoading && f?.linkedin}><h4>{(!isLoading && f?.name) || <Skeleton />}</h4></a>
-                    <p>{(!isLoading && f?.title) || <Skeleton />}</p>
+                    <p style={{ marginBottom: '3px' }}>{(!isLoading && f?.title) || <Skeleton />}</p>
+                    {f?.linkedin ? <a className={styles.linkedinButton} href={f?.linkedin}><p>{(!isLoading && "LinkedIn ➤") || <Skeleton />}</p></a> : <p></p>}
                   </div>
                 </div>
               ))}

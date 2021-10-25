@@ -52,6 +52,20 @@
   margin-bottom: 18px;
 }
 
+.linkedinButton {
+  height: 27px;
+  width: 120px;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 151, 00, 0.12);
+  justify-content: center;
+  color: foundersOrange;
+  border-radius: 5px;
+  margin-bottom: 0px;
+}
+
 .leftArr {
   box-sizing: border-box;
   position: relative;

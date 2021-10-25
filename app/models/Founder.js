@@ -18,7 +18,6 @@ const FounderSchema = new Schema({
   },
   linkedin: {
     type: String,
-    required: true,
   },
 });
 
