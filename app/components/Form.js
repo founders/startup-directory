@@ -80,11 +80,11 @@ const postSchema = {
             type: 'string',
             title: 'Position Name',
           },
-          linkedin: { 
+          linkedin: {
             type: 'string',
             format: 'url',
-            title: 'Linkedin URL'
-          }
+            title: 'Linkedin URL',
+          },
         },
       },
     },
