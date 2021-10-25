@@ -42,7 +42,7 @@ const Filters = ({ filters, updateFilters }) => {
         />
         <label htmlFor="is-hiring">Hiring</label>
       </p>
-      
+
       <span>
         <label htmlFor="">
           Founded{' '}
