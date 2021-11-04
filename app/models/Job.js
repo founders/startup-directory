@@ -1,22 +1,23 @@
 import mongoose, { Schema } from 'mongoose';
 
 const JobSchema = new Schema({
-  title: {
+  jobTitle: {
     type: String,
     required: true,
   },
-  description: {
+  jobDescription: {
     type: String,
     required: true,
   },
-  skills: {
+  jobSkills: {
     type: [String],
     default: [],
   },
-  link: {
+  jobLink: {
     type: String,
     required: true,
   },
 });
 
-export default mongoose.models.Job || mongoose.model('Job', JobSchema);
+export default mongoose.models.Job || 
+  mongoose.model('Job', JobSchema);

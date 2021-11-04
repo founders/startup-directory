@@ -58,6 +58,33 @@ const postSchema = {
       title: 'Hide your Profile?',
       type: 'boolean',
     },
+    jobs: {
+      type: 'array',
+      default: [],
+      title: 'Job Listings',
+      items: {
+        type: 'object',
+        required: ['jobTitle', 'jobDescription', 'jobSkills', 'jobLink'],
+        properties: {
+          jobTitle: {
+            type: 'string',
+            title: 'Job Title'
+          }, 
+          jobDescription: {
+            type: 'string',
+            title: 'Job Description'
+          },
+          jobSkills: {
+            type: 'string',
+            title: 'Job Skills'
+          }, 
+          jobLink: {
+            type: 'string',
+            title: 'Job Link'
+          }
+        }
+      }
+    },
     founders: {
       type: 'array',
       default: [],
@@ -115,6 +142,9 @@ const uiSchema = {
   founders: {
     'ui:description': 'Add the founders of your organization.',
   },
+  jobs: {
+    'ui:description': 'Add job listings of your organization',
+  }
 };
 
 export default function Form({ onSubmit, account }) {

@@ -1,11 +1,11 @@
 .glyphicon.glyphicon-plus::before {
   font-style: normal;
-  content: '+ Add a Founder';
+  content: '+ Add a Job Listing';
 }
 
 .glyphicon.glyphicon-remove::before {
   font-style: normal;
-  content: '- Remove this Founder';
+  content: '- Remove this Job Listing';
 }
 
 .array-item-move-up,
