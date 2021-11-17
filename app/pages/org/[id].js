@@ -83,6 +83,11 @@ export default function Org() {
                   tags={org.categories ?? []}
                   tagStyle={{ fontSize: '12px' }}
                 />
+                <Tags
+                  style={{ marginBottom: '6px' }}
+                  tags={org.resources ?? []}
+                  tagStyle={{ fontSize: '12px' }}
+                />
                 <ul className={styles.statsList}>
                   <li>
                     <h4>Stage:</h4> {org.stage ?? ''}
