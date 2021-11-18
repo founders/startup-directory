@@ -1,17 +1,25 @@
 @value colors: "./colors.css";
 @value cBlue from colors;
 
-.directoryWrapper {
-  display: flex;
+@media (min-width: 600px) {
+  .directoryWrapper {
+    display: flex;
+  }
+
+  .leftWrapper {
+    width: 330px;
+    margin-right: 18px;
+  }
+  
+  .rightWrapper {
+    flex: 3;
+  }
 }
 
-.leftWrapper {
-  width: 330px;
-  margin-right: 18px;
-}
-
-.rightWrapper {
-  flex: 3;
+@media (max-width: 600px) {
+  .leftWrapper {
+    padding-bottom: 2em;
+  }
 }
 
 .desc {
