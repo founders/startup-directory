@@ -11,8 +11,9 @@ body {
   background-color: #fafafa;
 }
 
-@media (max-width:600px) {
-  html, body {
+@media (max-width: 600px) {
+  html,
+  body {
     position: absolute;
   }
 }
