@@ -52,6 +52,15 @@
   margin-bottom: 18px;
 }
 
+.linkedin {
+  width: 17px;
+  color: #0072b1;
+}
+
+.linkedin:hover {
+  color: #d3d3d3;
+}
+
 .leftArr {
   box-sizing: border-box;
   position: relative;
