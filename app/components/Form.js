@@ -1,6 +1,6 @@
 import React from 'react';
 import JSONSchemaForm from 'react-jsonschema-form';
-import { STAGES, CATEGORIES, SIZES } from '../utils/constants';
+import { STAGES, CATEGORIES, SIZES, RESOURCES } from '../utils/constants';
 
 const postSchema = {
   type: 'object',
@@ -32,6 +32,12 @@ const postSchema = {
       type: 'string',
       enum: CATEGORIES,
       default: CATEGORIES[0],
+    },
+    resources: {
+      title: 'Resources',
+      type: 'string',
+      enum: RESOURCES,
+      default: RESOURCES[0],
     },
     stage: {
       title: 'Stage',

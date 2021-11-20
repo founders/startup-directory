@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 import Founder from './Founder';
-import { CATEGORIES, SIZES, STAGES } from '../utils/constants';
+import { CATEGORIES, RESOURCES, SIZES, STAGES } from '../utils/constants';
 
 const FounderSchema = Founder.schema;
 
@@ -31,6 +31,11 @@ const OrgSchema = new Schema({
   categories: {
     type: [String],
     enum: CATEGORIES,
+    required: true,
+  },
+  resources: {
+    type: [String],
+    enum: RESOURCES,
     required: true,
   },
   stage: {
