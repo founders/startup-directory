@@ -136,13 +136,20 @@ export default function Org() {
                       {(!isLoading && f?.title) || <Skeleton />}
                     </p>
                     {f?.linkedin ? (
-                      <a href={f?.linkedin}><faLinkedin /></a>
+                      <a href={f?.linkedin}>
+                        <faLinkedin />
+                      </a>
                     ) : (
                       <p></p>
                     )}
                     {f?.linkedin ? (
-                      //<a href={f?.linkedin}> <FontAwesomeIcon icon = {faLinkedin} size={100} style = {{color: "#0072b1"}}></FontAwesomeIcon> </a>
-                      <a href={f?.linkedin}> <FontAwesomeIcon icon = {faLinkedin} className={styles.linkedin}></FontAwesomeIcon> </a>
+                      <a href={f?.linkedin}>
+                        {' '}
+                        <FontAwesomeIcon
+                          icon={faLinkedin}
+                          className={styles.linkedin}
+                        ></FontAwesomeIcon>{' '}
+                      </a>
                     ) : (
                       <p></p>
                     )}
