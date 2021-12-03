@@ -16,6 +16,9 @@ const FounderSchema = new Schema({
     type: String,
     required: true,
   },
+  linkedin: {
+    type: String,
+  },
 });
 
 export default mongoose.models.Founder ||

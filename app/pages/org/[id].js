@@ -2,6 +2,8 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import styles from '../../styles/Organization.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import Skeleton from 'react-loading-skeleton';
 
 import JobCard from '../../components/JobCard';
@@ -83,6 +85,11 @@ export default function Org() {
                   tags={org.categories ?? []}
                   tagStyle={{ fontSize: '12px' }}
                 />
+                <Tags
+                  style={{ marginBottom: '6px' }}
+                  tags={org.resources ?? []}
+                  tagStyle={{ fontSize: '12px' }}
+                />
                 <ul className={styles.statsList}>
                   <li>
                     <h4>Stage:</h4> {org.stage ?? ''}
@@ -130,7 +137,27 @@ export default function Org() {
                   )}
                   <div>
                     <h4>{(!isLoading && f?.name) || <Skeleton />}</h4>
-                    <p>{(!isLoading && f?.title) || <Skeleton />}</p>
+                    <p style={{ marginBottom: '3px' }}>
+                      {(!isLoading && f?.title) || <Skeleton />}
+                    </p>
+                    {f?.linkedin ? (
+                      <a href={f?.linkedin}>
+                        <faLinkedin />
+                      </a>
+                    ) : (
+                      <p></p>
+                    )}
+                    {f?.linkedin ? (
+                      <a href={f?.linkedin}>
+                        {' '}
+                        <FontAwesomeIcon
+                          icon={faLinkedin}
+                          className={styles.linkedin}
+                        ></FontAwesomeIcon>{' '}
+                      </a>
+                    ) : (
+                      <p></p>
+                    )}
                   </div>
                 </div>
               ))}
