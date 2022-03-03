@@ -24,3 +24,18 @@ export async function getAnalytics() {
   const json = await res.json();
   return json;
 }
+
+export async function getOrgs() {
+  const res = await fetch('/api/organizations/?findAll=true');
+  const json = await res.json();
+  return json;
+}
+
+export async function updateOrg(org) {
+  const neworg = await fetch('/api/accounts/org', {
+    method: 'PATCH',
+    body: JSON.stringify(org),
+  });
+  const json = neworg.json();
+  return json;
+}

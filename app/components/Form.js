@@ -94,10 +94,6 @@ const postSchema = {
         },
       },
     },
-    isHidden: {
-      title: 'Hide your Profile?',
-      type: 'boolean',
-    },
   },
   required: [
     'name',

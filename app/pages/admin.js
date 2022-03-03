@@ -5,6 +5,8 @@ import {
   createWhitelist,
   updateWhitelist,
   getAnalytics,
+  getOrgs,
+  updateOrg,
 } from '../utils/adminAPI';
 import { validateEmail } from '../utils/helpers';
 
@@ -19,6 +21,8 @@ import styles, {
 } from '../styles/Admin.module.css';
 import AccountContext from '../utils/AccountContext';
 import { useRouter } from 'next/router';
+import { TAG_COLORS } from '../utils/constants';
+// import org from './api/accounts/org';
 
 const PANEL = {
   ANALYTICS: 'ANALYTICS',
@@ -27,7 +31,7 @@ const PANEL = {
 };
 
 function Admin() {
-  const [panel, setPanel] = React.useState(PANEL.WHITELIST);
+  const [panel, setPanel] = React.useState(PANEL.MANAGE);
 
   const { account } = React.useContext(AccountContext);
 
@@ -35,6 +39,7 @@ function Admin() {
   const [lastUpdated, setLastUpdated] = React.useState(undefined);
 
   const [analytics, setAnalytics] = React.useState(undefined);
+  const [orgs, setOrgs] = React.useState(undefined);
 
   const [submissionState, setSubmissionState] = React.useState('IDLE');
   // TODO: Add searching for users
@@ -64,6 +69,12 @@ function Admin() {
       if (upstreamAnalytics?.data) {
         setAnalytics(upstreamAnalytics.data);
       }
+
+      const organizations = await getOrgs();
+      if (organizations?.data) {
+        // Get list of approved and disapproved organizations.
+        setOrgs(organizations.data);
+      }
     })();
   }, []);
 
@@ -91,9 +102,16 @@ function Admin() {
       });
   };
 
+  async function onCheckChange(org) {
+    org.isHidden = !org.isHidden;
+    updateOrg(org);
+    await new Promise((r) => setTimeout(r, 500));
+    window.location.reload();
+  }
+
   const contentWhitelist = (
     <article className="card">
-      <h2>Manage Whitelist</h2>
+      <h2>Manage Whitelist (Deprecated)</h2>
       <p>
         Update the whitelist with this virtual text file. Each line must be a
         valid email or blank (these get stripped out) to submit.
@@ -101,15 +119,6 @@ function Admin() {
       <div className={whitelistHeader}>
         <code>whitelist.txt</code>{' '}
         {lastUpdated && <span>Last Updated: {lastUpdated}</span>}
-        {/* <label htmlFor="user-search">
-                Search:{' '}
-                <input
-                  id="user-search"
-                  type="text"
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                />
-              </label> */}
       </div>
       <textarea
         defaultValue={userList}
@@ -129,6 +138,45 @@ function Admin() {
           &nbsp; &times; One or more entry is invalid.
         </small>
       )}
+    </article>
+  );
+
+  let manageContent = (
+    <article className="card">
+      <h2>Organizations</h2>
+      <p>
+        View all organizations in the directory here. Toggle their visibility on
+        the feed using the switch to the right.
+      </p>
+      <div style={{ width: '100%', height: '100%', overflow: 'scroll' }}>
+        {orgs ? (
+          <>
+            {Object.keys(orgs).map((key) => (
+              <div
+                style={{ display: 'flex', justifyContent: 'space-between' }}
+                className="card"
+              >
+                <span>
+                  <a href={`/org/${orgs[key].id}`} style={{ color: '#F89620' }}>
+                    {orgs[key].name}
+                  </a>{' '}
+                  {orgs[key].founders[0] && `(${orgs[key].founders[0]?.name})`}
+                </span>
+                <label className={'switch'}>
+                  <input
+                    type="checkbox"
+                    onChange={() => onCheckChange(orgs[key])}
+                    defaultChecked={!orgs[key].isHidden}
+                  />
+                  <span className={'slider round'}></span>
+                </label>
+              </div>
+            ))}
+          </>
+        ) : (
+          <>Loading...</>
+        )}
+      </div>
     </article>
   );
 
@@ -173,9 +221,9 @@ function Admin() {
     case PANEL.WHITELIST:
       content = <>{contentWhitelist}</>;
       break;
-    // case PANEL.MANAGE:
-    //   content = <></>;
-    //   break;
+    case PANEL.MANAGE:
+      content = <>{manageContent}</>;
+      break;
     default:
       content = (
         <span>
@@ -206,10 +254,8 @@ function Admin() {
       <main className={main}>
         <h1>Admin Portal</h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis,
-          exercitationem, amet quo possimus laboriosam et corporis natus ut
-          libero eum repellat at, nam aliquam rem ullam obcaecati nulla
-          voluptate porro!
+          This is the Startup Directory Admin Portal. Here, you can view pending
+          Startup join requests, see site analytics, etc.
         </p>
         <div className={panelStyle}>
           <aside>
@@ -221,6 +267,14 @@ function Admin() {
             <ul className="card">
               <li style={{ cursor: 'default' }}>
                 <b>Directory</b>
+              </li>
+              <li
+                className={
+                  panel === PANEL.MANAGE ? 'active-admin-menu-item' : undefined
+                }
+                onClick={() => setPanel(PANEL.MANAGE)}
+              >
+                Manage Data
               </li>
               <li
                 className={
@@ -241,14 +295,6 @@ function Admin() {
                 onClick={() => setPanel(PANEL.WHITELIST)}
               >
                 Manage Whitelist
-              </li>
-              <li
-                className={
-                  panel === PANEL.MANAGE ? 'active-admin-menu-item' : undefined
-                }
-                onClick={() => setPanel(PANEL.MANAGE)}
-              >
-                Manage Data
               </li>
               <Link href="/api/auth/logout" exact>
                 <li>Logout</li>
