@@ -21,7 +21,6 @@ import styles, {
 } from '../styles/Admin.module.css';
 import AccountContext from '../utils/AccountContext';
 import { useRouter } from 'next/router';
-import { TAG_COLORS } from '../utils/constants';
 // import org from './api/accounts/org';
 
 const PANEL = {
@@ -72,7 +71,6 @@ function Admin() {
 
       const organizations = await getOrgs();
       if (organizations?.data) {
-        // Get list of approved and disapproved organizations.
         setOrgs(organizations.data);
       }
     })();
