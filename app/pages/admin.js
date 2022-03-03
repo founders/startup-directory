@@ -21,7 +21,6 @@ import styles, {
 } from '../styles/Admin.module.css';
 import AccountContext from '../utils/AccountContext';
 import { useRouter } from 'next/router';
-// import org from './api/accounts/org';
 
 const PANEL = {
   ANALYTICS: 'ANALYTICS',
@@ -100,9 +99,8 @@ function Admin() {
       });
   };
 
-  async function onCheckChange(org) {
-    org.isHidden = !org.isHidden;
-    updateOrg(org);
+  function onCheckChange(org) {
+    updateOrg({ ...org, isHidden: !org.isHidden });
   }
 
   const contentWhitelist = (
@@ -147,22 +145,23 @@ function Admin() {
       <div style={{ width: '100%', height: '100%', overflow: 'scroll' }}>
         {orgs ? (
           <>
-            {Object.keys(orgs).map((key) => (
+            {orgs.map((org, idx) => (
               <div
                 style={{ display: 'flex', justifyContent: 'space-between' }}
                 className="card"
+                key={idx}
               >
                 <span>
-                  <a href={`/org/${orgs[key].id}`} style={{ color: '#F89620' }}>
-                    {orgs[key].name}
+                  <a href={`/org/${org.id}`} style={{ color: '#F89620' }}>
+                    {org.name}
                   </a>{' '}
-                  {orgs[key].founders[0] && `(${orgs[key].founders[0]?.name})`}
+                  {org.founders[0] && `(${org.founders[0]?.name})`}
                 </span>
                 <label className={'switch'}>
                   <input
                     type="checkbox"
-                    onChange={() => onCheckChange(orgs[key])}
-                    defaultChecked={!orgs[key].isHidden}
+                    onChange={() => onCheckChange(org)}
+                    defaultChecked={!org.isHidden}
                   />
                   <span className={'slider round'}></span>
                 </label>

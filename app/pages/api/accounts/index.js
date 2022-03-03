@@ -29,7 +29,6 @@ async function handler(req, res) {
 
           res.status(201).json({ success: true, data: createdAccount });
         } catch (error) {
-          console.error(error);
           res.status(400).json({ success: false, message: error?.message });
         }
         break;

@@ -60,7 +60,7 @@ const OrgSchema = new Schema({
   isHidden: {
     type: Boolean,
     required: false,
-    default: true, // startups are, by default, invisible
+    default: true,
   },
   founders: {
     type: [FounderSchema],
