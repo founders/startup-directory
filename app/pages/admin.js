@@ -103,8 +103,6 @@ function Admin() {
   async function onCheckChange(org) {
     org.isHidden = !org.isHidden;
     updateOrg(org);
-    await new Promise((r) => setTimeout(r, 500));
-    window.location.reload();
   }
 
   const contentWhitelist = (
