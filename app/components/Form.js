@@ -1,3 +1,4 @@
+import router from 'next/router';
 import React from 'react';
 import JSONSchemaForm from 'react-jsonschema-form';
 import { STAGES, CATEGORIES, SIZES, RESOURCES } from '../utils/constants';
@@ -128,11 +129,11 @@ const uiSchema = {
 export default function Form({ onSubmit, account }) {
   const [isLoading, setIsLoading] = React.useState(true);
   const [schema, setSchema] = React.useState(postSchema);
-  const [buttonText, setButtonText] = React.useState('Submit');
+  const [buttonText, setButtonText] = React.useState('Save Changes');
 
   React.useEffect(() => {
     (async function () {
-      if (!account) return;
+      if (!account || !account.orgId) return;
 
       const res = await fetch(`/api/organizations/${account.orgId}`);
       const json = await res.json();
@@ -174,9 +175,23 @@ export default function Form({ onSubmit, account }) {
     <div className="container">
       <div className="col-md-offset-8 col-md-7">
         <JSONSchemaForm onSubmit={onSubmit} schema={schema} uiSchema={uiSchema}>
-          <div>
+          <div style={{ display: 'flex' }}>
             <button type="submit" className={'btn btn-info btn-add'}>
               {buttonText}
+            </button>
+            <button
+              type="button"
+              className={'btn btn-info btn-delete'}
+              onClick={() => {
+                if (confirm('Are you sure you want to delete this org?')) {
+                  fetch(`/api/organizations/${account.orgId}`, {
+                    method: 'DELETE',
+                  });
+                  router.reload();
+                }
+              }}
+            >
+              Delete Org
             </button>
           </div>
         </JSONSchemaForm>

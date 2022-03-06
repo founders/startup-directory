@@ -88,16 +88,20 @@ export default function Onboarding({ user }) {
           <button onClick={() => setStage(STAGES.DEFAULT)}>&larr; Back</button>
           {{
             [STAGES.JOINING]: (
-              <button
-                className={styles.onboardingButtonSmall}
-                disabled={!selectedToJoin}
+              <a
+                href={`mailto:team@founders.illinois.edu?subject=[Directory] Request to Join ${selectedToJoin?.name}&body=Founders Team,%0D%0AUser ${account.email} would like to join the ${selectedToJoin?.name} organization.`}
               >
-                {!selectedToJoin ? (
-                  'Select an existing startup'
-                ) : (
-                  <>{`Request to Join ${selectedToJoin?.name} `}&rarr;</>
-                )}
-              </button>
+                <button
+                  className={styles.onboardingButtonSmall}
+                  disabled={!selectedToJoin}
+                >
+                  {!selectedToJoin ? (
+                    'Select an existing startup'
+                  ) : (
+                    <>{`Request to Join ${selectedToJoin?.name} `}&rarr;</>
+                  )}
+                </button>
+              </a>
             ),
             [STAGES.CREATION]: (
               <button
