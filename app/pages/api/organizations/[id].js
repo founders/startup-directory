@@ -1,5 +1,6 @@
 import dbConnect from '../../../middleware/dbConnect';
 import Org from '../../../models/Org';
+import Account from '../../../models/Account';
 
 /**
  * api/organizations/[id]
@@ -26,6 +27,30 @@ export default async function handler(req, res) {
               .status(404)
               .json({ success: false, message: 'org not found' });
           }
+          res.status(200).json({ success: true, data: org });
+        } catch (error) {
+          res.status(400).json({ success: false, message: error?.message });
+        }
+        break;
+
+      case 'DELETE':
+        try {
+          const org = await Org.findOne({ id });
+          if (!org) {
+            return res
+              .status(404)
+              .json({ success: false, message: 'org not found' });
+          }
+          // Sanitize users that belong to this organization
+          await Account.updateMany(
+            {
+              orgId: id,
+            },
+            {
+              $set: { orgId: '' },
+            },
+          );
+          await Org.deleteOne({ id });
           res.status(200).json({ success: true, data: org });
         } catch (error) {
           res.status(400).json({ success: false, message: error?.message });
