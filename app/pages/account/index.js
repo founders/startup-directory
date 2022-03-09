@@ -30,7 +30,6 @@ function Account() {
     </>
   );
   // show actions for accounts with no associated organizations
-  console.log(account?.orgId);
   if (!account?.orgId) {
     content = <Onboarding user={user} />;
   }
