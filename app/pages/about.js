@@ -6,7 +6,7 @@ import Layout from '../components/Layout';
 
 function About({ content }) {
   return (
-    <Layout title="About">
+    <Layout title="About Us">
       <span className="markdown">
         <ReactMarkdown children={content} />
       </span>
