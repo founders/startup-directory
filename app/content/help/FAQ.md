@@ -5,12 +5,16 @@ date: '2021-24-01'
 
 ### Who Can Join ?
 
-Anyone who want to learn more about the Start-Up ecosystem at UIUC is welcome to sign up explore the directory.
+Anyone who wants to learn more about the startup ecosystem at UIUC is welcome to sign up and explore the directory.
 
-### How Can You Contact Us ?
+### How Do I Create my own Startup Posting?
 
-If you have any more questions please let us know at Email us at [team@founders.illinois.edu](mailto:team@founders.illinois.edu)
+First "Sign In" at the top-right of the landing page with your Illinois Email. You can then create a new page for your startup, adding necessary information (description, founders, stage, etc.) which you will be able to update later on.
 
-## How to Create my own Start-Up Posting?
+### How do I join an existing Startup?
 
-In order to create your own posting, create an account. You will initially be blocked and redirected to a google form. After filling out the form, wait for an approval email from the Founder's team. You will then be put on the whitelist and can create your account and listing.
+After using the "Sign In" at the top-right of the landing page you will be redirected to a page where you can add yourself to your team.
+
+### How Can You Contact Us?
+
+If you have any more questions please let us know at [team@founders.illinois.edu](mailto:team@founders.illinois.edu)
