@@ -13,7 +13,8 @@
   display: none !important;
 }
 
-.btn.btn-info[type='submit'] {
+.btn.btn-info[type='submit'],
+.btn.btn-info[type='button'] {
   width: 100%;
   background: none;
   color: #f89620;
@@ -29,9 +30,20 @@
   box-sizing: border-box;
 }
 
-.btn.btn-info[type='submit']:hover {
+.btn.btn-info[type='submit']:hover,
+.btn.btn-info[type='button']:hover {
   background-color: #f89620;
   color: white;
+}
+
+.btn.btn-info.btn-delete[type='button'] {
+  color: red;
+  border: 1px solid red;
+}
+
+.btn.btn-info.btn-delete[type='button']:hover {
+  color: white;
+  background-color: red;
 }
 
 fieldset {
