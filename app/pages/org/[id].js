@@ -179,10 +179,10 @@ export default function Org() {
               <Skeleton width={230} />
             </div>
           )}
-          {/*!isLoading && org?.jobs && */}
-          {false && (
+          <br />
+          {!isLoading && (
             <>
-              <h2>Jobs</h2>
+              <h2>Looking for...</h2>
               <JobCard />
             </>
           )}
