@@ -94,6 +94,44 @@ const postSchema = {
         },
       },
     },
+    jobs: {
+      type: 'array',
+      default: [],
+      title: 'Job Listings',
+      items: {
+        type: 'object',
+        required: ['title', 'description', 'link'],
+        properties: {
+          title: {
+            type: 'string',
+            title: 'Job Position',
+          },
+          description: {
+            type: 'string',
+            title: 'Job Description',
+          },
+          skills: {
+            type: 'array',
+            title: 'Required Skills',
+            items: {
+              type: 'string',
+              enum: [
+                'UI/UX',
+                'Mobile Back-end Developer',
+                'Front-end Developer',
+                'Marketing',
+                'Software Engineer Intern',
+              ],
+            },
+            uniqueItems: true,
+          },
+          link: {
+            type: 'string',
+            title: 'Job Posting Link',
+          },
+        },
+      },
+    },
     isHidden: {
       title: 'Hide your Profile?',
       type: 'boolean',
@@ -126,6 +164,9 @@ const uiSchema = {
   },
   founders: {
     'ui:description': 'Add the founders of your organization.',
+  },
+  jobs: {
+    'ui:description': 'Post any job listing or roles you are looking for.',
   },
 };
 
