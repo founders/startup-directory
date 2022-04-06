@@ -1,11 +1,11 @@
 .glyphicon.glyphicon-plus::before {
   font-style: normal;
-  content: '+ Add a Founder';
+  content: '+ Add';
 }
 
 .glyphicon.glyphicon-remove::before {
   font-style: normal;
-  content: '- Remove this Founder';
+  content: '- Remove';
 }
 
 .array-item-move-up,
