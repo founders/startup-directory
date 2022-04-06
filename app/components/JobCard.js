@@ -9,7 +9,7 @@ const FAKE_JOB = {
     facere? Ipsam quisquam voluptatibus quaerat optio quae nisi incidunt quasi
     facere tempora.`,
   skills: ['JavaScript', 'Firebase', ' Angular', 'SQL'],
-  link: '#',
+  link: 'https://www.linkedin.com/jobs/collections/recommended/?currentJobId=2873143009',
 };
 
 export default function JobCard({ job }) {
@@ -29,7 +29,7 @@ export default function JobCard({ job }) {
           ))}
         </ul>
       )}
-      <a href={link} className={styles.button}>
+      <a href={link} target="_blank" className={styles.button}>
         Apply
       </a>
       <summary className={styles.jobSummary}>
