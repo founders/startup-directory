@@ -16,6 +16,8 @@
   justify-content: center;
   align-items: stretch;
   flex-direction: column;
+  margin: auto;
+  width: 80%;
 }
 
 .actionGrid button {

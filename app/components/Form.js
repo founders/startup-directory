@@ -1,5 +1,5 @@
 import router from 'next/router';
-import React from 'react';
+import React, { useEffect } from 'react';
 import JSONSchemaForm from 'react-jsonschema-form';
 import { STAGES, CATEGORIES, SIZES, RESOURCES } from '../utils/constants';
 
@@ -126,10 +126,11 @@ const uiSchema = {
   },
 };
 
-export default function Form({ onSubmit, account }) {
+export default function Form({ onSubmit, account, isOnboarding }) {
   const [isLoading, setIsLoading] = React.useState(true);
   const [schema, setSchema] = React.useState(postSchema);
-  const [buttonText, setButtonText] = React.useState('Save Changes');
+  const [buttonText, setButtonText] = React.useState(isOnboarding ? 'Submit' : 'Save Changes');
+  const [submitButtonDisabled, setSubmitButtonDisabled] = React.useState(false);
 
   React.useEffect(() => {
     (async function () {
@@ -148,6 +149,9 @@ export default function Form({ onSubmit, account }) {
           if (existingKeys.includes(key)) {
             let upstream = json.data[key];
             if (key === 'categories') {
+              upstream = upstream[0];
+            }
+            if (key === 'resources') {
               upstream = upstream[0];
             }
             newSchema.properties[key].default = upstream;
@@ -174,14 +178,25 @@ export default function Form({ onSubmit, account }) {
   return (
     <div className="container">
       <div className="col-md-offset-8 col-md-7">
-        <JSONSchemaForm onSubmit={onSubmit} schema={schema} uiSchema={uiSchema}>
-          <div style={{ display: 'flex' }}>
-            <button type="submit" className={'btn btn-info btn-add'}>
+        <JSONSchemaForm onSubmit={async (e) => {
+          const resp = await onSubmit(e);
+          if (resp.success) {
+            // Make sure user knows their changes went through
+            setButtonText('Success!');
+            setSubmitButtonDisabled(true);
+          } else {
+            setButtonText('Error on form submit!');
+            setButtonText('Save Changes');
+          }
+        }} schema={schema} uiSchema={uiSchema}>
+          <div style={{ display: 'flex', marginTop: '24px', marginBottom: '12px' }}>
+            <button style={{ margin: '0 12px', ...submitButtonDisabled && { color: 'lightgray', backgroundColor: 'white', border: 'none'}}} type="submit" className={'btn btn-info btn-add'} disabled={submitButtonDisabled}>
               {buttonText}
             </button>
             <button
               type="button"
               className={'btn btn-info btn-delete'}
+              style={{ margin: '0 12px'}}
               onClick={() => {
                 if (confirm('Are you sure you want to delete this org?')) {
                   fetch(`/api/organizations/${account.orgId}`, {

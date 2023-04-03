@@ -54,6 +54,7 @@ export const SIZES = Object.freeze([
 
 /** @constant {Array<string>} */
 export const RESOURCES = Object.freeze([
+  '',
   'TEC',
   'iVenture',
   'Zero2One',

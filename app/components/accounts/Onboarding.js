@@ -35,6 +35,7 @@ export default function Onboarding({ user }) {
     } else {
       console.error('Post Failed');
     }
+    return json;
   };
 
   let content = (
@@ -46,16 +47,6 @@ export default function Onboarding({ user }) {
           developments and join a community of UIUC founders.
         </p>
         <button onClick={() => setStage(STAGES.CREATION)}>Create A Page</button>
-      </div>
-      <div>
-        <h2>Already on the directory?</h2>
-        <p>
-          If your company has already been listed on the directory click below
-          to join your organization as a team member.
-        </p>
-        <button onClick={() => setStage(STAGES.JOINING)}>
-          Join Your Teammates
-        </button>
       </div>
     </div>
   );
@@ -75,7 +66,7 @@ export default function Onboarding({ user }) {
       );
       break;
     case STAGES.CREATION:
-      content = <Form onSubmit={handleSubmitOrg} />;
+      content = <Form onSubmit={handleSubmitOrg} isOnboarding />;
     default:
       break;
   }

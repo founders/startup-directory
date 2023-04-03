@@ -12,16 +12,17 @@ import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 import Onboarding from '../../components/accounts/Onboarding';
 import Layout from '../../components/Layout';
 
-function Account() {
+function Account({ isOnboarding }) {
   const { user } = useUser();
   const { account } = React.useContext(AccountContext);
 
   const handleFormSubmit = async (submission) => {
     const { formData: data } = submission;
-    await fetch('/api/accounts/org', {
+    const resp = await fetch('/api/accounts/org', {
       method: 'PATCH',
       body: JSON.stringify({ ...data, email: account.email }),
     });
+    return resp.json();
   };
 
   let content = (

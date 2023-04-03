@@ -35,7 +35,7 @@ const Nav = () => {
         {!user && (
           <li>
             <Link href="/api/auth/login" activeClassName="active-link" exact>
-              Sign In
+              Sign In / Register
             </Link>
           </li>
         )}
