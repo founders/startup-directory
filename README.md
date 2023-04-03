@@ -44,7 +44,6 @@ git push
 
 Open a Pull Request on Github, assign yourself to it and tag @SirajChokshi for a review.
 
-
 # Testing Changes
 
 To test changes made to the Startup Directory, we'll use our local testing environment. The Startup Directory is deployed live through a hosting service

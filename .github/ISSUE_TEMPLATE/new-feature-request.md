@@ -3,8 +3,7 @@ name: New Feature Request
 about: Request a new Startup Directory feature.
 title: "[ Request ]"
 labels: Request
-assignees: ''
-
+assignees: ""
 ---
 
 ## Description of New Feature

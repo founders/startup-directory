@@ -129,7 +129,9 @@ const uiSchema = {
 export default function Form({ onSubmit, account, isOnboarding }) {
   const [isLoading, setIsLoading] = React.useState(true);
   const [schema, setSchema] = React.useState(postSchema);
-  const [buttonText, setButtonText] = React.useState(isOnboarding ? 'Submit' : 'Save Changes');
+  const [buttonText, setButtonText] = React.useState(
+    isOnboarding ? 'Submit' : 'Save Changes',
+  );
   const [submitButtonDisabled, setSubmitButtonDisabled] = React.useState(false);
 
   React.useEffect(() => {
@@ -178,25 +180,43 @@ export default function Form({ onSubmit, account, isOnboarding }) {
   return (
     <div className="container">
       <div className="col-md-offset-8 col-md-7">
-        <JSONSchemaForm onSubmit={async (e) => {
-          const resp = await onSubmit(e);
-          if (resp.success) {
-            // Make sure user knows their changes went through
-            setButtonText('Success!');
-            setSubmitButtonDisabled(true);
-          } else {
-            setButtonText('Error on form submit!');
-            setButtonText('Save Changes');
-          }
-        }} schema={schema} uiSchema={uiSchema}>
-          <div style={{ display: 'flex', marginTop: '24px', marginBottom: '12px' }}>
-            <button style={{ margin: '0 12px', ...submitButtonDisabled && { color: 'lightgray', backgroundColor: 'white', border: 'none'}}} type="submit" className={'btn btn-info btn-add'} disabled={submitButtonDisabled}>
+        <JSONSchemaForm
+          onSubmit={async (e) => {
+            const resp = await onSubmit(e);
+            if (resp.success) {
+              // Make sure user knows their changes went through
+              setButtonText('Success!');
+              setSubmitButtonDisabled(true);
+            } else {
+              setButtonText('Error on form submit!');
+              setButtonText('Save Changes');
+            }
+          }}
+          schema={schema}
+          uiSchema={uiSchema}
+        >
+          <div
+            style={{ display: 'flex', marginTop: '24px', marginBottom: '12px' }}
+          >
+            <button
+              style={{
+                margin: '0 12px',
+                ...(submitButtonDisabled && {
+                  color: 'lightgray',
+                  backgroundColor: 'white',
+                  border: 'none',
+                }),
+              }}
+              type="submit"
+              className={'btn btn-info btn-add'}
+              disabled={submitButtonDisabled}
+            >
               {buttonText}
             </button>
             <button
               type="button"
               className={'btn btn-info btn-delete'}
-              style={{ margin: '0 12px'}}
+              style={{ margin: '0 12px' }}
               onClick={() => {
                 if (confirm('Are you sure you want to delete this org?')) {
                   fetch(`/api/organizations/${account.orgId}`, {
